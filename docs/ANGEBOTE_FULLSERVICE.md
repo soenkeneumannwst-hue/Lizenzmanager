@@ -284,3 +284,27 @@ Neu in V45:
 - Mengen werden vollständig berücksichtigt, z. B. zwei Bondrucker mit 2 × EK im Erst-EK und in der Rückstellung
 - bestehende Altangebote mit fehlenden Hardware-EK erhalten in der internen PDF eine Warnung
 - die 48-/60-Monatswerte bleiben ausschließlich interne Kalkulationswerte und erzeugen keinen turnusmäßigen Austauschanspruch des Kunden
+
+
+## V51 – Kosten-Zyklus je Position
+
+Jede Kalkulationsposition erhält einen Kosten-Zyklus:
+
+- **Einmalig**: EK fließt in den Erst-EK und wird über die Mindestlaufzeit amortisiert
+- **Monatlich**: EK wird jeden Monat als laufender Kostenblock berücksichtigt
+- **Jährlich**: EK wird für die Monatskalkulation automatisch durch 12 geteilt
+
+Beispiele:
+- Hardwarekauf: einmalig
+- Programmierung/Installation: einmalig
+- BusinessCard: monatlich
+- jährliche Wartungs-/Lizenzgebühr: jährlich
+
+Technisch:
+- `fs_offer_items.cost_cycle`
+- `fs_contract_items.cost_cycle`
+- automatische Schema-Erweiterung
+- Altbestände erhalten `once`
+- Vertragsnachkalkulation, Angebotskalkulation und interne PDF verwenden dieselbe Zykluslogik
+- der Hardware-/TSE-Ersatzzyklus bleibt davon getrennt und ist weiterhin nur eine interne Rückstellungs-/Planungsgröße
+- die automatische Softwarepflege von 15 % wird nur auf einmalig lizenzierte Software-/Modul-Neuwerte berechnet; monatliche/jährliche Abos erhöhen diesen Software-Neuwert nicht
