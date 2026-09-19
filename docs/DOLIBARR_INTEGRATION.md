@@ -256,3 +256,124 @@ API-Key nur serverseitig speichern und in der Oberfläche maskieren.
 - idempotente Synchronisation
 - keine automatische Löschung auf der Gegenseite
 - produktive Schreiboperationen erst nach erfolgreichem Test gegen eine Testinstanz oder klar abgegrenzte Testdaten
+
+
+## E-Mail-Archivierung und Dokumentverknüpfung
+
+Der Lizenzmanager soll zusätzlich als zentraler Eingang für relevante E-Mails dienen.
+
+### Zielbild
+
+Eine E-Mail kann an ein definiertes Lizenzmanager-Postfach weitergeleitet oder direkt dorthin geschickt werden.
+
+Der Lizenzmanager speichert:
+- originale E-Mail als `.eml`
+- Absender
+- Empfänger
+- Betreff
+- Sende-/Empfangsdatum
+- Message-ID
+- Text-/HTML-Inhalt
+- Anhänge
+- SHA-256-Hash zur Dublettenprüfung
+
+Danach wird die E-Mail einem Dolibarr-Objekt zugeordnet.
+
+### Mögliche Dolibarr-Ziele
+
+Priorität je nach erkannter E-Mail:
+
+1. konkrete Kundenrechnung
+2. konkreter Vertrag
+3. konkreter Auftrag/Angebot
+4. Kunde/Geschäftspartner
+5. Lieferant
+6. allgemeiner Dokumenteingang zur manuellen Zuordnung
+
+Der Lizenzmanager speichert dauerhaft:
+- Dolibarr Objekttyp
+- Dolibarr Objekt-ID
+- Dolibarr Dokumentpfad bzw. Dokumentreferenz
+- Synchronisationsstatus
+- Zeitpunkt der Übergabe
+
+### Dokumente in Dolibarr
+
+Die Original-E-Mail soll möglichst als `.eml` hochgeladen werden. Anhänge wie PDF, XML, Bilder oder Office-Dateien werden zusätzlich einzeln übertragen.
+
+Dadurch bleibt sowohl die originale Kommunikation als auch das eigentliche Dokument erhalten.
+
+Beispiel:
+
+**E-Mail von CASPOS**
+- Original: `mail_2026-09-19_12345.eml`
+- Anhang: `RECHNUNG_4260xxxx.pdf`
+- Zuordnung im Lizenzmanager: Lieferantenrechnung 4260xxxx
+- Dolibarr: Dokumente der zugehörigen Lieferantenrechnung oder des Lieferanten
+
+**E-Mail vom Kunden**
+- Original-E-Mail
+- ggf. Anhänge
+- Zuordnung zum Kunden
+- optional zusätzlich zu Rechnung, Vertrag oder Supportvorgang
+
+Die Dolibarr Documents REST API unterstützt objektbezogene Dokumente und Datei-Uploads. Welche `modulepart`-Werte auf der produktiven Dolibarr-Version verfügbar sind, wird vor Aktivierung über den Dolibarr API Explorer geprüft.
+
+### Automatisches Matching
+
+Die Zuordnung erfolgt schrittweise:
+
+1. bekannte E-Mail-Adresse → Kunde/Lieferant
+2. Kundennummer / Rechnungsnummer / Vertragsnummer im Betreff oder Inhalt
+3. erkannter PDF-Anhang
+4. bekannte Anbieter-Kundennummer
+5. bei Eindeutigkeit automatisch verknüpfen
+6. bei Mehrdeutigkeit als Aufgabe anzeigen
+
+Manuelle Zuordnungen werden gelernt und künftig wiederverwendet.
+
+### Arbeitskorb
+
+Im Lizenzmanager soll ein Bereich entstehen:
+
+**Einkauf / Kommunikation → E-Mail-Dokumente**
+
+Status je E-Mail:
+- neu
+- Kunde erkannt
+- Dokument erkannt
+- Dolibarr zugeordnet
+- Dokumente synchronisiert
+- vollständig erledigt
+- Fehler / Prüfung nötig
+
+Beispielanzeige:
+
+**3/3 Dokumente übertragen · Kunde zugeordnet · Dolibarr verknüpft · ✓ erledigt**
+
+Erst wenn alle notwendigen Schritte abgeschlossen sind, verschwindet die E-Mail aus dem offenen Arbeitskorb.
+
+### Deduplizierung
+
+Zur Vermeidung doppelter Ablage:
+- Message-ID der E-Mail
+- Hash der vollständigen `.eml`
+- Hash je Anhang
+- Dolibarr-Zielobjekt + Dateiname/Hash
+
+Eine bereits archivierte E-Mail darf bei erneutem Weiterleiten nicht doppelt als Dokument angelegt werden.
+
+### Aufbewahrung
+
+Der Lizenzmanager behält eine lokale Referenz/Archivkopie, auch wenn das Dokument zusätzlich an Dolibarr übertragen wurde.
+
+Dolibarr ist dann das kaufmännische Dokumentarchiv am jeweiligen Objekt; der Lizenzmanager hält die technische Importhistorie und die Verknüpfung.
+
+### Sicherheit
+
+- HTML-Inhalte nur bereinigt anzeigen
+- Anhänge niemals ungeprüft ausführen
+- nur erlaubte Dateitypen direkt anzeigen
+- API-Key bleibt serverseitig
+- Upload nach Dolibarr nur über HTTPS
+- kein automatisches Überschreiben bestehender Dolibarr-Dokumente ohne eindeutige Hashprüfung
