@@ -272,3 +272,15 @@ Neu in V45:
 - Diagramm: kumulierte Einnahmen, kumulierte Kosten, kumuliertes Ergebnis
 - interne Marker für Monat 48 (HW-Kalkulationspunkt) und Monat 60 (TSE-Kalkulationspunkt)
 - Grafik erscheint ausschließlich in der internen PDF
+
+
+## V50 – vollständige Hardware-/TSE-EK-Kalkulation
+
+- jede Hardware- und TSE-Position mit Menge > 0 benötigt einen tatsächlichen EK/Stück
+- Speichern wird verhindert, wenn bei Hardware/TSE der EK fehlt
+- fehlende EK-Felder werden im Editor deutlich markiert und in einer Warnbox aufgeführt
+- ohne separaten Austausch-EK wird der aktuelle EK automatisch als konservative Basis der internen Ersatzrückstellung übernommen
+- ohne individuellen Zyklus gilt intern der Standardzyklus des Angebots: Hardware aktuell 48 Monate, TSE aktuell 60 Monate
+- Mengen werden vollständig berücksichtigt, z. B. zwei Bondrucker mit 2 × EK im Erst-EK und in der Rückstellung
+- bestehende Altangebote mit fehlenden Hardware-EK erhalten in der internen PDF eine Warnung
+- die 48-/60-Monatswerte bleiben ausschließlich interne Kalkulationswerte und erzeugen keinen turnusmäßigen Austauschanspruch des Kunden
