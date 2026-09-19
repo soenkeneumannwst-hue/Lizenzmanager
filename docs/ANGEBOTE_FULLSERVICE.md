@@ -234,3 +234,15 @@ Neu in V45:
 - BusinessCard-Prüfung erfolgt bei Kundenauswahl und nochmals serverseitig beim Speichern
 - interne PDF und Vertragsnachkalkulation verwenden dieselbe Softwarepflege-/BusinessCard-Logik
 - Produktbezug und kalkulierter Neuwert werden bei Übernahme als Vertrag mitgespeichert
+
+
+## V46 – zweizeilige Positionsblöcke und Softwareauswahl nur bei Software
+
+- interne Angebotspositionen werden als optisch getrennte Blöcke statt als breite Ein-Zeilen-Tabelle dargestellt
+- erste Zeile: Kategorie, Software/Modul, Bezeichnung, Menge, Kundensichtbarkeit
+- zweite Zeile: EK, Neuwert/VK, laufende EK, Austausch-EK, Zyklus, Stunden und interner Stundensatz
+- Software/Modul-Auswahl aus der zentralen DB wird nur bei Kategorie `software` angezeigt
+- bei Hardware, TSE, Service, Dienstleistung und Sonstiges wird kein Softwaremodul angeboten
+- beim Wechsel weg von Software wird der Modulbezug auf 0 zurückgesetzt
+- serverseitig wird `product_id` nur für Softwarepositionen akzeptiert; dadurch können manipulierte Formulardaten keine Hardwareposition mit einem Softwaremodul verknüpfen
+- DB-Preisübernahme durch „Preise aus DB & neu kalkulieren“ wird nur auf Softwarepositionen angewendet
