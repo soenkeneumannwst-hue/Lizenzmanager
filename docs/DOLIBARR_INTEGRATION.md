@@ -389,3 +389,22 @@ Stand 19.09.2026:
 - erwarteter API-Explorer: `https://erp.falke-kassen.de/htdocs/api/index.php/explorer`
 
 Der API-Key wird nicht im Repository gespeichert. Er wird später ausschließlich serverseitig in der Lizenzmanager-Konfiguration hinterlegt.
+
+
+## API-IP-Beschränkung
+
+Bei der produktiven Dolibarr-Instanz ist die REST-API aktuell zusätzlich per IP eingeschränkt.
+
+Fehlermeldung:
+
+`APIs are not allowed from the IP ...`
+
+Dolibarr verwendet dafür die globale Einstellung `API_RESTRICT_ON_IP`. Ist sie gesetzt, akzeptiert die API nur exakt die dort eingetragenen Quell-IP-Adressen. Mehrere Adressen werden leerzeichengetrennt gespeichert.
+
+Für die Lizenzmanager-Anbindung soll nicht primär die Arbeitsplatz-IP freigeschaltet werden, sondern die öffentliche ausgehende IP des Servers, auf dem der Lizenzmanager läuft. Für den manuellen API-Explorer kann bei Bedarf zusätzlich temporär eine Arbeitsplatz-IP freigegeben werden.
+
+Wichtig:
+- leerer Wert = keine IP-Einschränkung
+- produktiv bevorzugt feste Server-IP(s) freigeben
+- API-Key bleibt trotzdem zusätzlich erforderlich
+- dynamische Client-IPv6-Adressen sind ungeeignet als dauerhafte Integrationsfreigabe
