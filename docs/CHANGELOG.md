@@ -1,3 +1,13 @@
+## V45 – DB-Modulpreise und automatische Softwarepflege
+
+- Button „Preise aus DB & neu kalkulieren“ im Full-Service-Angebot
+- Software-/Modulpreise direkt aus products + pricebooks
+- Produktbezug je Full-Service-Position
+- Softwarepflege verbindlich 15 % vom Software-Neuwert pro Jahr
+- DATEV-BusinessCard: 50 % Rabatt auf Softwarepflege plus aktueller BusinessCard-Monatswert aus DB
+- BusinessCard-Prüfung bei Kunde/Vertragsstart
+- Kalkulationslogik auch in interner PDF und Vertragsrentabilität übernommen
+
 ## V44 – Full-Service-Angebote und Mietverträge
 
 - bestehende Update-Angebote bleiben erhalten
