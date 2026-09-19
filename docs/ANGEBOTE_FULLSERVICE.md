@@ -246,3 +246,16 @@ Neu in V45:
 - beim Wechsel weg von Software wird der Modulbezug auf 0 zurückgesetzt
 - serverseitig wird `product_id` nur für Softwarepositionen akzeptiert; dadurch können manipulierte Formulardaten keine Hardwareposition mit einem Softwaremodul verknüpfen
 - DB-Preisübernahme durch „Preise aus DB & neu kalkulieren“ wird nur auf Softwarepositionen angewendet
+
+
+## V47 – 48 Monate nur interne Kalkulation, kein Kundenanspruch auf Hardwaretausch
+
+- 48 Monate bleiben als konservativer interner Kalkulations-/Rückstellungszyklus für Hardware bestehen.
+- Im Kundenangebot, Kunden-PDF und öffentlichen Vertragsstatus wird kein turnusmäßiger Hardwaretausch nach 48 Monaten mehr zugesagt.
+- Kundenregel: Bei normalem technischen Defekt wird die vereinbarte Hardware repariert oder durch geeignete Hardware ersetzt.
+- Funktionsfähige Hardware muss nicht nach einer festen Laufzeit erneuert werden.
+- FALKE-KASSEN kann während eines aktiven Full-Service-Vertrags freiwillig nach eigenem Ermessen technisch sinnvolle Modernisierungen vornehmen; daraus entsteht kein Anspruch des Kunden.
+- Interne Entscheidung über freiwillige Modernisierung kann technischen Zustand, Wirtschaftlichkeit und ordnungsgemäßen Vertrags-/Zahlungsverlauf berücksichtigen.
+- TSE: kundenextern nur Austausch bei technischer Erforderlichkeit; der interne Kalkulationszyklus bleibt erhalten.
+- Kundenstatus-Seite zeigt keine internen Hardware-/TSE-Plantermine mehr.
+- Admin-Beschriftung kennzeichnet Hardware-/TSE-Zyklen ausdrücklich als interne Kalkulationswerte.
