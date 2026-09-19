@@ -1,3 +1,12 @@
+## V47 – Interner 48-Monats-Zyklus ohne Hardwaretausch-Zusage
+
+- 48 Monate bleiben interne Rückstellungs-/Kalkulationsbasis
+- kein turnusmäßiger Hardwaretausch im Kundenvertrag oder Kunden-PDF
+- Reparatur/Austausch bei normalem technischem Defekt bleibt Full-Service-Leistung
+- freiwillige Modernisierung funktionsfähiger Hardware liegt im Ermessen von FALKE-KASSEN
+- Kundenstatus zeigt keine internen Ersatztermine
+- TSE kundenextern nur bei technischer Erforderlichkeit beschrieben
+
 ## V46 – Positions-UI und Softwareauswahl
 
 - zweizeilige, farblich abgesetzte Positionsblöcke statt breiter Kalkulationstabelle
