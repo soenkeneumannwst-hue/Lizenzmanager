@@ -408,3 +408,78 @@ Wichtig:
 - produktiv bevorzugt feste Server-IP(s) freigeben
 - API-Key bleibt trotzdem zusätzlich erforderlich
 - dynamische Client-IPv6-Adressen sind ungeeignet als dauerhafte Integrationsfreigabe
+
+
+## Quellcode-Referenz Dolibarr 22.0
+
+Für die produktive Integration wird der offizielle Dolibarr-Quellcode im Branch **22.0** als technische Referenz verwendet. Nicht ungeprüft gegen `develop` implementieren, da die produktive Installation auf 22.0.2 läuft.
+
+Wichtige Dateien:
+
+- `htdocs/api/index.php` – REST-Loader, CORS/Header, API-IP-Beschränkung
+- `htdocs/api/class/api_documents.class.php` – Dokumentlisten, Download, Dokumenterzeugung und Upload
+- `htdocs/societe/class/api_thirdparties.class.php` – Kunden/Lieferanten
+- `htdocs/compta/facture/class/api_invoices.class.php` – Kundenrechnungen
+- `htdocs/fourn/class/api_supplier_invoices.class.php` – Lieferantenrechnungen
+- `htdocs/comm/action/class/api_agendaevents.class.php` – Agenda-/Kommunikationsereignisse
+- `htdocs/core/triggers/interface_95_modWebhook_WebhookTriggers.class.php` – Webhook-Auslösung und JSON-POST
+
+### Konsequenz für die E-Mail-Architektur
+
+Der Dokument-Upload in Dolibarr 22.0 unterstützt per Objekt-`ref` u. a.:
+- Kundenrechnung (`invoice`)
+- Lieferantenrechnung (`supplier_invoice`)
+- Auftrag / Lieferantenauftrag
+- Angebot
+- Vertrag
+- Projekt / Projektaufgabe
+- Agenda-Ereignis
+- Kontakt
+- Produkt/Service
+- Intervention
+
+Ein direkter Dokument-Upload auf einen **Thirdparty/Kunden über dessen ref** ist in der Upload-Methode von Dolibarr 22.0 nicht als eigener Fall implementiert.
+
+Deshalb wird die E-Mail-Ablage wie folgt geplant:
+
+1. Jede relevante E-Mail wird im Lizenzmanager vollständig archiviert.
+2. Für eine kundenbezogene Kommunikation wird in Dolibarr ein **Agenda-Ereignis** erzeugt und mit der Thirdparty-ID (`socid`) verknüpft.
+3. Die Originalmail (`.eml`) und bei Bedarf Anhänge werden über `documents/upload` mit `modulepart=agenda` an dieses Agenda-Ereignis gehängt.
+4. Wird zusätzlich eine konkrete Rechnung, Lieferantenrechnung oder ein Vertrag erkannt, wird das fachliche Dokument (z. B. PDF) zusätzlich direkt an dieses Dolibarr-Objekt gehängt oder eindeutig dorthin verknüpft.
+5. So erscheint die Kommunikation in der Kundenhistorie und das eigentliche Belegdokument zugleich am kaufmännisch richtigen Objekt.
+
+### Dokument-Upload
+
+Dolibarr 22.0 stellt in `api_documents.class.php` bereit:
+
+`POST /documents/upload`
+
+Wesentliche Parameter:
+- `filename`
+- `modulepart`
+- `ref`
+- `filecontent`
+- `fileencoding=base64`
+- `overwriteifexists`
+
+Für die Integration wird `overwriteifexists=0` verwendet und zusätzlich im Lizenzmanager per SHA-256 dedupliziert.
+
+### Agenda-Ereignis als E-Mail-Container
+
+Die Agenda-API kann Ereignisse erzeugen. Pflichtfelder in Dolibarr 22.0 sind insbesondere:
+- `userownerid`
+- `type_code`
+
+Zusätzlich können Felder des Agenda-Objekts wie `socid`, Label/Beschreibung, Datum usw. gesetzt werden.
+
+Geplanter Datensatz je Mail:
+- Label: `E-Mail: <Betreff>`
+- `socid`: Dolibarr-Kunde/Lieferant
+- Datum: Maildatum
+- Beschreibung: Absender, Empfänger, Betreff und bereinigter Textauszug
+- externe Referenz/Extrafeld: Lizenzmanager-Mail-ID / Message-ID
+- Anhänge: Original-`.eml` plus relevante Anhänge
+
+### Webhooks
+
+Der Webhook-Trigger von Dolibarr 22.0 sendet bei konfigurierten Triggercodes JSON per HTTP POST an die Ziel-URL. Dies kann später genutzt werden, um Zahlungs-/Rechnungsänderungen unmittelbar an den Lizenzmanager zu melden.
