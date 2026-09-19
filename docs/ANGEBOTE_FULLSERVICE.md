@@ -210,3 +210,27 @@ Geändert:
 - `public/admin/customers.php`
 
 Alle aktiven V44-Dateien wurden mit PHP 8.4 per `php -l` geprüft. Im gelieferten Voll-ZIP existiert unabhängig von V44 eine ältere, nicht aktive Sicherungsdatei `public/admin/contracts3.php` mit einem Parsefehler durch ein Steuerzeichen. Diese Datei gehört nicht zum V44-Patch.
+
+
+## V45 – Kalkulation aktualisieren, Modulpreise aus DB, Softwarepflege 15 %
+
+Die Full-Service-Kalkulation verwendet für Software und Module den bestehenden zentralen Produkt-/Preislistenstamm:
+
+- `products` = Produkt/Modul
+- `pricebooks` = gültiger EK/VK bzw. Neuwert
+- `license_modules.product_id` = Modulbezug einer Lizenz
+
+Damit werden Softwarepreise nicht nochmals separat im Full-Service-Modul gepflegt.
+
+Neu in V45:
+
+- Button **„Preise aus DB & neu kalkulieren“** direkt im Angebotseditor
+- DB-Produkt/Modul je Angebotsposition auswählbar
+- DB-VK/Neuwert ist für verknüpfte Softwaremodule führend
+- Softwarepflege wird verbindlich mit **15 % vom Software-Neuwert pro Jahr** berechnet
+- alle Angebotspositionen der Kategorie `software` fließen in den Software-Neuwert ein
+- vorhandener manueller Software-EK bleibt erhalten; bei EK 0 kann der vorhandene DB-EK übernommen werden
+- bei aktiver **DATEV-BusinessCard**: 50 % Rabatt auf die Softwarepflege; der aktuelle BusinessCard-Monatswert aus der BusinessCard-Datenbank wird zusätzlich berücksichtigt (typisch 19,90 EUR, DB-Wert ist führend)
+- BusinessCard-Prüfung erfolgt bei Kundenauswahl und nochmals serverseitig beim Speichern
+- interne PDF und Vertragsnachkalkulation verwenden dieselbe Softwarepflege-/BusinessCard-Logik
+- Produktbezug und kalkulierter Neuwert werden bei Übernahme als Vertrag mitgespeichert
