@@ -377,3 +377,15 @@ Dolibarr ist dann das kaufmännische Dokumentarchiv am jeweiligen Objekt; der Li
 - API-Key bleibt serverseitig
 - Upload nach Dolibarr nur über HTTPS
 - kein automatisches Überschreiben bestehender Dolibarr-Dokumente ohne eindeutige Hashprüfung
+
+
+## Produktive Dolibarr-Instanz
+
+Stand 19.09.2026:
+
+- Basis-URL: `https://erp.falke-kassen.de/htdocs/`
+- Version: **22.0.2**
+- erwartete REST-Basis: `https://erp.falke-kassen.de/htdocs/api/index.php/`
+- erwarteter API-Explorer: `https://erp.falke-kassen.de/htdocs/api/index.php/explorer`
+
+Der API-Key wird nicht im Repository gespeichert. Er wird später ausschließlich serverseitig in der Lizenzmanager-Konfiguration hinterlegt.
