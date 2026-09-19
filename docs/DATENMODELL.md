@@ -148,3 +148,42 @@ Statuslogik:
 - ausgegeben
 
 Nur tatsächlich ausgegebene Boni reduzieren die Rentabilität.
+
+
+## Full-Service-Angebote und Mietverträge (V44)
+
+### fs_offers
+Kopf eines neuen Full-Service-/Mietangebots. Enthält u. a. Kunde, Angebotsnummer, Status, Kundenanschrift als Snapshot, Monatsrate, Serviceanteil, Mindestlaufzeit, Kündigungs-/Verlängerungswerte, Planwert zur Indexierung sowie Standardzyklen für Hardware und TSE.
+
+### fs_offer_items
+Interne Kalkulationspositionen eines Full-Service-Angebots:
+- Kategorie
+- Menge
+- EK / kalkulatorischer VK
+- laufender EK pro Monat
+- Austausch-EK und Austauschzyklus
+- interne Arbeitszeit / interner Stundensatz
+- Kundensichtbarkeit und Kundenbeschreibung
+
+### fs_offer_documents
+Versionierte, serverseitig erzeugte PDFs je Angebot. Kunden-PDF und interne Kalkulations-PDF werden getrennt gespeichert; ältere Versionen bleiben erhalten.
+
+### fs_contracts
+Aus einem angenommenen Angebot erzeugter Full-Service-Auftrag/-Vertrag. Speichert Laufzeit, aktuelle Rate, Serviceanteil, Indexregelung, optionale Lizenzzuordnung sowie einen zufälligen Public-Token für die Kundenstatus-Seite.
+
+### fs_contract_items
+Unveränderter Vertrags-Snapshot der Angebotspositionen, einschließlich interner EK-/Austauschwerte und Kundensichtbarkeit.
+
+### fs_contract_assets
+Einzelne Hardware-/TSE-Geräte pro Vertrag mit Seriennummer, Einbaudatum, EK, Ersatz-EK, Austauschzyklus und nächstem geplanten Austauschtermin.
+
+### fs_asset_events
+Historie tatsächlicher Gerätewechsel mit alter/neuer Seriennummer, Austauschdatum, EK, Arbeitszeit und Grund.
+
+### fs_cost_entries
+Nachkalkulation tatsächlicher Vertragskosten, z. B. Support, Arbeitszeit, Hardware, Software, TSE, Fahrt oder sonstige Kosten.
+
+### fs_contract_rates
+Historie der Monatsrate je Vertrag, damit spätere VPI-/Preisanpassungen nachvollziehbar bleiben.
+
+Die neuen fs_* Tabellen sind absichtlich von den bestehenden `offers`- und `contracts`-Tabellen getrennt, damit die etablierte Update-Angebots- und Lizenzvertragslogik unverändert weiterläuft.
