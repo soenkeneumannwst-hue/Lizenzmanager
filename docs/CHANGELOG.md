@@ -1,3 +1,13 @@
+## V51 – Kosten-Zyklus Einmalig/Monatlich/Jährlich
+
+- Kosten-Zyklus pro Angebotsposition
+- einmalige Kosten → Erst-EK/Amortisation
+- monatliche Kosten → 1:1 laufender EK
+- jährliche Kosten → automatisch /12 für Monatskalkulation
+- Vertragsnachkalkulation und interne PDF auf dieselbe Logik umgestellt
+- Ersatz-Zyklus Hardware/TSE bleibt separat
+- 15-%-Softwarepflege nur auf einmalig lizenzierte Software-/Modul-Neuwerte
+
 ## V50 – sämtliche Hardware/TSE mit EK kalkulieren
 
 - Hardware-/TSE-EK wird für jede Position verpflichtend
