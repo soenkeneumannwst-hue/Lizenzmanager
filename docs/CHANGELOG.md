@@ -1,3 +1,12 @@
+## V50 – sämtliche Hardware/TSE mit EK kalkulieren
+
+- Hardware-/TSE-EK wird für jede Position verpflichtend
+- Speichersperre bei fehlendem EK
+- automatische Übernahme EK → Austausch-EK, wenn kein separater Wert hinterlegt ist
+- Menge vollständig in Erst-EK und Rückstellung berücksichtigt
+- interner Standardzyklus 48 Monate Hardware / 60 Monate TSE als Fallback
+- Warnung in der internen PDF bei älteren unvollständigen Angeboten
+
 ## V49 – interne PDF-KPI-Tabelle und Diagramm
 
 - Überlappung langer Bezeichnungen/Werte behoben
