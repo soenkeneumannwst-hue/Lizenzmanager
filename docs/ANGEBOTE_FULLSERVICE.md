@@ -161,4 +161,52 @@ Diese Ist-Kosten fließen in die Vertragsrentabilität ein.
 
 ## Technische Randbedingung zum Stand V43
 
-Das bereitgestellte V43-ZIP ist ein Patch-Paket und enthält nicht den vollständigen Anwendungscode. Insbesondere fehlt die im Produktionssystem vorhandene Datei `public/admin/offers.php` sowie die vollständige Basis-/PDF-Infrastruktur. Die Implementierung soll deshalb auf dem vollständigen aktuellen Quellstand erfolgen, nicht durch Neuerfindung der bestehenden Angebotslogik.
+Der zuerst bereitgestellte V43-Patch enthielt nicht den vollständigen Anwendungscode. Anschließend wurde der vollständige Stand `LizenzManager_BC-Card (2).zip` bereitgestellt und als Basis für V44 verwendet.
+
+
+## Implementierungsstand V44
+
+Der vollständige Stand `LizenzManager_BC-Card (2).zip` wurde geprüft. Darin sind die produktiven Angebotsdateien einschließlich `public/admin/offers.php`, `offer_print.php`, Kundenstamm, Vertragsverwaltung und Layout enthalten.
+
+Darauf wurde V44 als Patch umgesetzt. Neu bzw. erweitert sind:
+
+- Full-Service-/Mietangebote direkt unter **Vertrieb → Angebote**
+- MediaPOS-100-Vorlage und leeres Full-Service-Angebot
+- Angebots-Snapshot der Kundenanschrift
+- interne EK-/VK-/Support-/Austausch-Kalkulation
+- Standard-Serviceanteil 39,00 EUR netto/Monat
+- Mindestlaufzeit 48 Monate
+- Hardware-Austauschzyklus standardmäßig 48 Monate
+- TSE-Austauschzyklus standardmäßig 60 Monate
+- Planwert für jährliche VPI-/Preisanpassung
+- serverseitige PDF-Erzeugung ohne externe Composer-Abhängigkeit
+- getrennte Kunden-PDF und interne Kalkulations-PDF
+- PDF-Versionierung und Archivierung in der Datenbank
+- Statuskette Entwurf → versendet → angenommen → Auftrag → aktiver Vertrag → beendet
+- Übernahme angenommener Angebote als Auftrag/Full-Service-Vertrag
+- Geräte- und Seriennummernverwaltung
+- Austauschbuchungen mit altem/neuem Gerät und tatsächlichem EK
+- Nachkalkulation von Support, Arbeitszeit, Hardware, Software, TSE, Fahrt und sonstigen Kosten
+- Preisänderungshistorie
+- öffentlicher tokenisierter Kundenstatus-Link mit aktuellem Preis, Laufzeit, nächstem möglichen Vertragsende, Kündigungstermin und geplanten Erneuerungen; interne EK-/Margenwerte bleiben verborgen
+
+Die neue Datenhaltung verwendet eigene `fs_*`-Tabellen, damit die bestehende Update-Angebotslogik und die vorhandenen `contracts`-Funktionen nicht beschädigt werden.
+
+Die zentrale Kundenrentabilität wird in V44 bewusst noch nicht automatisch um die neuen Plan-/Ist-Kosten erweitert. Grund ist die Gefahr einer Doppelzählung, wenn dieselbe Hardware bzw. Software zusätzlich über Lieferantenrechnungen im bestehenden Einkaufssystem verbucht wird. Die spätere Verknüpfung soll über eindeutige Kosten-/Belegreferenzen mit Deduplizierung erfolgen.
+
+### V44-Patchdateien
+
+Neu:
+- `lib/SimplePdf.php`
+- `public/admin/_fullservice.php`
+- `public/admin/fullservice_offer.php`
+- `public/admin/fullservice_pdf.php`
+- `public/admin/fullservice_contracts.php`
+- `public/service_contract_status.php`
+
+Geändert:
+- `public/admin/offers.php`
+- `public/admin/_layout_top.php`
+- `public/admin/customers.php`
+
+Alle aktiven V44-Dateien wurden mit PHP 8.4 per `php -l` geprüft. Im gelieferten Voll-ZIP existiert unabhängig von V44 eine ältere, nicht aktive Sicherungsdatei `public/admin/contracts3.php` mit einem Parsefehler durch ein Steuerzeichen. Diese Datei gehört nicht zum V44-Patch.
