@@ -1,3 +1,19 @@
+## V44 – Full-Service-Angebote und Mietverträge
+
+- bestehende Update-Angebote bleiben erhalten
+- neue Full-Service-/Mietangebote direkt unter Vertrieb > Angebote
+- MediaPOS-100-Vorlage mit 48 Monaten Mindestlaufzeit, 39 EUR Serviceanteil, Hardwarezyklus 48 Monate und TSE-Zyklus 60 Monate
+- interne EK-, Support-, Austausch- und Rückstellungskalkulation
+- serverseitige Kunden- und interne PDF-Erzeugung ohne externe Composer-Abhängigkeit
+- PDF-Versionierung
+- Status Entwurf → versendet → angenommen → Auftrag → aktiver Vertrag → beendet
+- Übernahme angenommener Angebote in Full-Service-Verträge
+- Geräte-/Seriennummernverwaltung und Austauschhistorie
+- Nachkalkulation tatsächlicher Support-/Hardware-/Software-/TSE-/Fahrtkosten
+- Preisänderungshistorie
+- tokenisierte Kundenstatus-Seite mit nächstem möglichem Vertragsende und Kündigungstermin
+- zentrale Kundenrentabilität noch nicht automatisch mit fs_* Plan-/Ist-Kosten vermischt, um Doppelzählungen gegenüber Lieferantenbelegen zu vermeiden
+
 # Änderungshistorie
 
 Dokumentiert die wesentlichen Entwicklungsstufen des aktuellen Lizenzmanager-Projekts.
