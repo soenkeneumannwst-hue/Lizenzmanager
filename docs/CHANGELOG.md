@@ -1,3 +1,11 @@
+## V46 – Positions-UI und Softwareauswahl
+
+- zweizeilige, farblich abgesetzte Positionsblöcke statt breiter Kalkulationstabelle
+- DB-Software-/Modulauswahl nur noch bei Kategorie Software
+- Produktbezug wird beim Kategorienwechsel weg von Software automatisch entfernt
+- serverseitiger Schutz: product_id nur für Softwarepositionen
+- DB-Preisrefresh nur für Softwarepositionen
+
 ## V45 – DB-Modulpreise und automatische Softwarepflege
 
 - Button „Preise aus DB & neu kalkulieren“ im Full-Service-Angebot
