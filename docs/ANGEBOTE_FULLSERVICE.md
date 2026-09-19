@@ -259,3 +259,16 @@ Neu in V45:
 - TSE: kundenextern nur Austausch bei technischer Erforderlichkeit; der interne Kalkulationszyklus bleibt erhalten.
 - Kundenstatus-Seite zeigt keine internen Hardware-/TSE-Plantermine mehr.
 - Admin-Beschriftung kennzeichnet Hardware-/TSE-Zyklen ausdrücklich als interne Kalkulationswerte.
+
+
+## V49 – interne PDF mit sauberem KPI-Raster und Grafik
+
+- interne Kalkulationswerte werden in einem zweispaltigen Raster ausgegeben
+- lange Bezeichnungen und Werte überlappen nicht mehr
+- Werte stehen rechtsbündig in einer eigenen Spalte
+- abwechselnd leicht hinterlegte Zeilen verbessern die Lesbarkeit
+- grafische Kalkulationsübersicht wird direkt unter den KPI-Werten ausgegeben
+- Kennzahlen: Monatsrate, Break-even, Ergebnis 48 Monate, Ergebnis 72 Monate
+- Diagramm: kumulierte Einnahmen, kumulierte Kosten, kumuliertes Ergebnis
+- interne Marker für Monat 48 (HW-Kalkulationspunkt) und Monat 60 (TSE-Kalkulationspunkt)
+- Grafik erscheint ausschließlich in der internen PDF
