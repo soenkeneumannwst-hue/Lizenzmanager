@@ -1,3 +1,12 @@
+## V49 – interne PDF-KPI-Tabelle und Diagramm
+
+- Überlappung langer Bezeichnungen/Werte behoben
+- zweispaltiges, rechtsbündiges KPI-Raster mit alternierenden Zeilen
+- grafische Kalkulationsübersicht direkt unter den Kennzahlen
+- Monatsrate, Break-even, Ergebnis 48/72 Monate als Kennzahlenboxen
+- Einnahmen, Kosten und Ergebnis als 72-Monats-Diagramm
+- interne HW-/TSE-Kalkulationsmarker
+
 ## V47 – Interner 48-Monats-Zyklus ohne Hardwaretausch-Zusage
 
 - 48 Monate bleiben interne Rückstellungs-/Kalkulationsbasis
