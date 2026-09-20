@@ -1,3 +1,11 @@
+## V54 – BusinessCard-Lieferantenbonus klar benannt
+
+- Sonderboni in der UI in Lieferantenbonus umbenannt
+- Seite heißt „Zusätzlicher BusinessCard-Lieferantenbonus“
+- Hinweis ergänzt: nicht die monatliche BusinessCard-Gebühr
+- Berichte/Belegansichten sprachlich vereinheitlicht
+- keine Änderung an Tabellen oder Berechnungslogik
+
 ## V53 – Briefpapier für Angebots-PDFs
 
 - A4-Briefpapier im Stil der POSCLOUD-Rechnungen
