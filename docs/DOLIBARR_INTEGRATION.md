@@ -527,3 +527,33 @@ Die TSE-Stammdaten orientieren sich jetzt am realen Swissbit-TSE-Aufkleber und u
 Bestehende Altwerte werden automatisch klassifiziert: Hardware-ID-Muster landen in `hardware_id`, lange Hexwerte in `tse_serial_number`. Nicht klassifizierbare Platzhalter wie `1` bleiben als Altwert sichtbar, werden aber nicht mehr für den Dolibarr-Abgleich verwendet.
 
 Der Dolibarr-Abgleich prüft Hardware-ID und TSE-Seriennummer getrennt. Ein zusätzlicher Präfix wie `607645-` wird nur beim Hardware-ID-Vergleich ignoriert; der eigentliche Hardware-ID-Kern muss exakt stimmen. Technische TSE-Seriennummern werden ebenfalls exakt verglichen und auch erkannt, wenn ein 64-stelliger Hexwert im Freitext über zwei Zeilen verteilt ist.
+
+
+## V64 – Aktive EUCASOFT-/CASPOS-Systemkunden abgleichen
+
+Dolibarr ist für den Aktiv-/Systemstatus führend:
+- Kategorie **SystemKunde** = aktiver Systemkunde
+- Kategorie **EUCASOFT** = EUCASOFT-Kunde
+- Kategorie **CASPOS** = CASPOS-Kunde
+- automatisch berücksichtigt werden nur Mitglieder von SystemKunde, die zusätzlich EUCASOFT und/oder CASPOS zugeordnet sind
+
+Neu unter **Stammdaten → Systemkunden-Abgleich**:
+- direkte REST-Auswertung der Dolibarr-Kategorien und ihrer Kundenmitglieder
+- Summen für SystemKunde, EUCASOFT, CASPOS, beide Systeme, lokal zuordenbar, lokal fehlend und manuell zu prüfen
+- Matching-Priorität: Dolibarr-ID → Dolibarr-Kundennummer exakt → E-Mail exakt → normalisierter Name exakt
+- bestehende Verknüpfung mit abweichender Dolibarr-ID wird niemals automatisch überschrieben
+- mehrdeutige Treffer bleiben zur manuellen Prüfung offen
+- „Alle aktiven Systemkunden abgleichen“ aktualisiert eindeutige Bestandskunden und legt eindeutig fehlende aktive Systemkunden lokal neu an
+- Kunden werden durch diesen Abgleich niemals automatisch gelöscht
+
+### Kundennummer
+Die Dolibarr-Kundennummer (`code_client`) ist führend und wird bei jedem Abgleich in den Lizenzmanager übernommen.
+Dafür wird `customers.customer_number` automatisch ergänzt und parallel zu `dolibarr_customer_code` gepflegt. Die Kundennummer ist in Kundenliste und Kundenmaske sichtbar und wird bei der Kundensuche berücksichtigt.
+
+Zusätzliche lokale Statusfelder:
+- `dolibarr_system_customer`
+- `dolibarr_eucasoft`
+- `dolibarr_caspos`
+- `dolibarr_category_synced_at`
+
+Der Dolibarr-API-Benutzer benötigt für diesen Abgleich zusätzlich **Leserechte auf Kategorien**.
