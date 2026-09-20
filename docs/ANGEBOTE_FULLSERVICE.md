@@ -326,3 +326,17 @@ Bedeutung:
 - AAA = dreistellige, pro Kalendertag fortlaufende Nummer
 
 Die Tagesnummer startet jeweils wieder bei 001. Bestehende Angebotsnummern werden nicht rückwirkend geändert.
+
+
+## V53 – FALKE-KASSEN Briefpapier für Angebots-PDFs
+
+- Kunden- und interne Angebots-PDF erhalten ein einheitliches A4-Briefpapier im Stil der POSCLOUD-Rechnungs-PDFs
+- blauer Akzent und klarer FALKE-KASSEN Firmenkopf
+- Absenderzeile und Anschriftenfeld links
+- Dokumentdaten rechts mit Angebotsnummer, Datum, Gültigkeit und geplantem Start
+- Full-Service-Monatsrate als hervorgehobener Bereich
+- feste Fußzeile auf jeder Seite
+- Folgeseiten behalten Firmenkopf und Fußzeile
+- Kundenfassung ist als ANGEBOT gekennzeichnet; interne Fassung als INTERNE KALKULATION
+- aktuelle Briefpapierdaten: FALKE-KASSEN GmbH, Mozartstr. 3, 26215 Wiefelstede, +49 (0)4402-60696, falke-kassen.com
+- aktuell wird eine typografische FALKE-KASSEN Wortmarke verwendet, da im Repository noch keine Logo-Bilddatei hinterlegt ist
