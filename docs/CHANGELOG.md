@@ -1,3 +1,10 @@
+## V52 – Angebotsnummer JJMMTTAAA
+
+- neue Full-Service-Angebote verwenden JJMMTTAAA
+- Beispiel: 260920001 für erstes Angebot am 20.09.2026
+- AAA läuft pro Kalendertag dreistellig hoch
+- bestehende Angebotsnummern bleiben unverändert
+
 ## V51 – Kosten-Zyklus Einmalig/Monatlich/Jährlich
 
 - Kosten-Zyklus pro Angebotsposition
