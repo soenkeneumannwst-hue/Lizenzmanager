@@ -496,3 +496,18 @@ Die Aktion **Eindeutige Treffer übernehmen** ändert ausschließlich bisher unz
 Im TSE-Datensatz werden Prüfergebnis, Dolibarr-Thirdparty-ID, ggf. Rechnungs-ID/-Ref, Quelle und Prüfzeitpunkt gespeichert.
 
 Standardmäßig werden bis zu 10 Rechnungsseiten à 250 Rechnungen geprüft; der Umfang ist bis 40 Seiten konfigurierbar.
+
+
+## V62 – TSE-Freitext/Präfix-Normalisierung
+
+Beim TSE-Abgleich wurde die Erkennung an die reale Dolibarr-Datenpflege angepasst. TSE-IDs stehen dort teilweise in Freitextfeldern zusammen mit Angaben wie `TSE1:`, `TSE2:`, `ID:`, Ablaufdatum oder BSI-Kennung. Zusätzlich tragen manche Einträge einen führenden numerischen Präfix, z. B. `607645-602603730189-0325-5`, während im Lizenzmanager nur der Kern `602603730189-0325-5` gespeichert sein kann.
+
+Neu:
+- TSE-Serien werden aus Dolibarr-Freitexten per Mustererkennung extrahiert
+- Leerzeichen um Bindestriche werden toleriert
+- ein optionaler 5- bis 8-stelliger numerischer Präfix wird nur für den Vergleich ignoriert, wenn der verbleibende Kern exakt einer lokalen TSE-Seriennummer entspricht
+- der numerische TSE-Kern selbst bleibt ein strenger 1:1-Abgleich
+- gefundene Originaldarstellung aus Dolibarr wird im Prüfergebnis angezeigt
+- Status `noch nicht geprüft` weist nun ausdrücklich auf **Scan starten** hin
+
+Sicherheitsregel bleibt unverändert: Kunden werden niemals aufgrund eines ähnlichen Namens oder eines nur teilweise passenden Seriennummernfragments automatisch zugewiesen.
