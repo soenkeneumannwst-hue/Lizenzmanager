@@ -377,3 +377,25 @@ Dolibarr ist dann das kaufmännische Dokumentarchiv am jeweiligen Objekt; der Li
 - API-Key bleibt serverseitig
 - Upload nach Dolibarr nur über HTTPS
 - kein automatisches Überschreiben bestehender Dolibarr-Dokumente ohne eindeutige Hashprüfung
+
+
+## Implementierungsstand V55 – Phase 1 live vorbereitet
+
+Phase 1 ist im Lizenzmanager als read-first Integration umgesetzt:
+
+- neue Admin-Seite **System → Dolibarr**
+- produktive REST-Basis standardmäßig `https://erp.falke-kassen.de/htdocs/api/index.php`
+- API-Key ausschließlich serverseitig; im Lizenzmanager verschlüsselt gespeichert und in der UI nie angezeigt
+- Verbindungstest gegen die Thirdparty-API
+- klare Erkennung der Dolibarr-IP-Sperre `API_RESTRICT_ON_IP`
+- Kundenimport/-abgleich Dolibarr → Lizenzmanager
+- feste Speicherung von `customers.dolibarr_thirdparty_id`, Dolibarr-Kundennummer und Sync-Zeitpunkt
+- automatische Zuordnung nur bei eindeutiger Dolibarr-ID, exakter E-Mail oder eindeutigem normalisiertem Namen
+- manuelle Zuordnung bleibt möglich
+- lokale Neuanlage eines ausgewählten, noch nicht vorhandenen Dolibarr-Kunden
+- Kundenakte und Kundenliste zeigen Dolibarr-Verknüpfung
+- Dolibarr-Kundenrechnungen und Zahlungsstatus können pro verknüpftem Kunden lesend geladen werden
+- Synchronisationsprotokoll und Fehleranzeige im Aufgabenbereich
+- BusinessCard-Lieferantenbonus-Seite verlinkt bei verbundenen Kunden auf die Dolibarr-Rechnungsansicht
+
+Phase 1 schreibt bewusst **keine Rechnungen oder Kundenänderungen nach Dolibarr**. Nach erfolgreichem produktivem Verbindungstest folgt Phase 2 mit Rechnungsentwürfen, eindeutigen Rechnungslinks und automatischer Zahlungsrückmeldung.
