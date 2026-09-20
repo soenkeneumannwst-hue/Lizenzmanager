@@ -557,3 +557,32 @@ Zusätzliche lokale Statusfelder:
 - `dolibarr_category_synced_at`
 
 Der Dolibarr-API-Benutzer benötigt für diesen Abgleich zusätzlich **Leserechte auf Kategorien**.
+
+
+## V65 – QUAD-Lieferantenrechnung automatisch zum Dolibarr-Kunden
+
+Für QUAD-Lieferantenrechnungen ist die **Lieferanschrift** die führende Endkundenquelle. Die auf der QUAD-Rechnung ausgewiesene QUAD-Kundennummer ist die Lieferanten-Kundennummer von FALKE-KASSEN und wird ausdrücklich **nicht** als Endkunden-Kundennummer verwendet.
+
+Workflow:
+1. QUAD anhand Absender/Rechnungstext erkennen.
+2. Bei ZUGFeRD/Factur-X/XRechnung zuerst die strukturierten XML-Daten auswerten; bei normalem PDF die Lieferanschrift layoutbezogen auslesen.
+3. Endkunde im lokalen Lizenzmanager erkennen oder automatisch anlegen.
+4. Über feste Dolibarr-ID/Kundennummer bzw. exakten Namen und Adressdaten in Dolibarr suchen.
+5. Wenn kein eindeutiger Dolibarr-Kunde existiert, automatisch einen Dolibarr-Geschäftspartner mit `client=1` und der Lieferanschrift anlegen.
+6. Die von Dolibarr vergebene Kundennummer `code_client` zurück in `customers.customer_number` / `dolibarr_customer_code` übernehmen.
+7. Original-Lieferanten-PDF direkt im Dokumentenordner des Dolibarr-Kunden ablegen.
+8. Vorhandenes E-Rechnungs-XML zusätzlich beim Kunden ablegen.
+9. Übertragung pro Lieferantenbeleg/Kunde protokollieren und bei Fehlern manuell erneut anstoßen können.
+
+Die Tabelle `supplier_invoice_dolibarr_links` protokolliert Dolibarr-Kunde, automatische Neuanlage, PDF-/XML-Uploadstatus, Fehler und Synczeitpunkt. Eine Eingangsrechnung kann weiterhin mehrere Endkunden enthalten; in diesem Fall wird der Beleg bei jedem eindeutig zugeordneten Kunden abgelegt.
+
+### QUAD Beispielregel
+Bei einer QUAD-Rechnung wie `R2625916` ist nicht der Rechnungsempfänger FALKE-KASSEN der Endkunde, sondern der unter **Lieferanschrift** genannte Kunde. Name, Ansprechpartner, Straße, PLZ und Ort werden übernommen.
+
+### E-Mail-Import
+Der E-Mail-Importer archiviert neben PDFs auch vorhandene Rechnungs-XML-Anhänge. Beim Öffnen/Verarbeiten des Arbeitskorbs werden eindeutige QUAD-Rechnungen automatisch verarbeitet. Eingebettetes ZUGFeRD-/Factur-X-XML hat Vorrang vor der PDF-Texterkennung.
+
+### Rechte
+Für V65 braucht der technische Dolibarr-API-Benutzer zusätzlich zu den Leserechten:
+- Geschäftspartner erstellen/bearbeiten
+- Dokumente beim Geschäftspartner hochladen
