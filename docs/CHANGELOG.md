@@ -1,3 +1,9 @@
+## V59 – Dolibarr-Navigation
+
+- System-Menü enthält Dolibarr wieder zuverlässig
+- V58/V57 Diagnose kumulativ im Patch enthalten
+- _layout_top.php wird mit ausgeliefert
+
 ## V58 – Dolibarr Diagnose-UI Fix
 
 - Diagnose-/Aktionsbuttons wieder dauerhaft sichtbar
