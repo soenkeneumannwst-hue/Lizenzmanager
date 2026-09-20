@@ -1,3 +1,11 @@
+## V63 – TSE Hardware-ID / Seriennummer getrennt
+
+- Hardware-ID und technische TSE-Seriennummer als getrennte Stammdatenfelder
+- Hersteller, HW-/SW-Version, Zertifikatsdatum und Kassen-Seriennummer ergänzt
+- bestehende TSE-Altwerte automatisch klassifiziert
+- Platzhalter wie „1“ vom automatischen Abgleich ausgeschlossen
+- Dolibarr-Abgleich prüft Hardware-ID und TSE-Seriennummer getrennt und exakt
+
 ## V62 – TSE-Freitext/Präfix-Normalisierung
 
 - TSE-IDs aus Dolibarr-Freitexten extrahieren
