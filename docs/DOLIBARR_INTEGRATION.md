@@ -472,3 +472,27 @@ Nach Installation ggf. Browsercache mit Strg+F5 aktualisieren.
 V57/V58/V59 enthielten im Dolibarr-Admin bereits das Feld `dolibarr_entity_id`, aber die Hilfsfunktion `dol_entity_id(PDO $pdo)` fehlte in `lib/Dolibarr.php`. Dadurch brach die Seite beim Rendern direkt nach der Beschriftung **Dolibarr Entity-ID** ab; nachfolgende Felder, Buttons und Diagnosebereiche wurden nicht mehr ausgegeben.
 
 V60 ergänzt die fehlende Funktion. Standardwert ist 0 = Entity des API-Benutzers.
+
+
+## V61 – TSE-ID/Seriennummer mit Dolibarr abgleichen
+
+Der bestehende zentrale TSE-Bestand wird mit Dolibarr über die eindeutige TSE-Seriennummer abgeglichen.
+
+Regeln:
+- Seriennummer ist der führende Abgleichsschlüssel
+- keine automatische TSE-Zuordnung anhand ähnlicher Kundennamen
+- Dolibarr-Geschäftspartnerdaten inklusive Extrafeldern werden nach exakten Seriennummern durchsucht
+- zusätzlich werden Kundenrechnungen inklusive Positionsdaten durchsucht
+- Serien aus `license_tse_serials` werden vor der Prüfung in `tse_devices` gespiegelt, sofern sie dort noch fehlen
+- eindeutiger Treffer + TSE bisher ohne Kunde → **eindeutig zuweisbar**
+- bestehende gleiche Zuordnung → **stimmt überein**
+- bestehende abweichende Zuordnung → **Konflikt**, niemals automatisch überschreiben
+- Treffer unter mehreren Dolibarr-Kunden → **mehrdeutig**, keine automatische Änderung
+- Dolibarr-Thirdparty noch nicht lokal verknüpft → Hinweis zur Kundenverknüpfung
+- nicht gefundene Serien bleiben unverändert
+
+Die Aktion **Eindeutige Treffer übernehmen** ändert ausschließlich bisher unzugeordnete TSEs mit genau einem konfliktfreien Dolibarr-Kundentreffer.
+
+Im TSE-Datensatz werden Prüfergebnis, Dolibarr-Thirdparty-ID, ggf. Rechnungs-ID/-Ref, Quelle und Prüfzeitpunkt gespeichert.
+
+Standardmäßig werden bis zu 10 Rechnungsseiten à 250 Rechnungen geprüft; der Umfang ist bis 40 Seiten konfigurierbar.
