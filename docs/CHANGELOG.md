@@ -1,3 +1,11 @@
+## V62 – TSE-Freitext/Präfix-Normalisierung
+
+- TSE-IDs aus Dolibarr-Freitexten extrahieren
+- optionale numerische Präfixe wie 607645- beim Vergleich berücksichtigen
+- TSE-Kern bleibt exakter Abgleich
+- Originalfundstelle im Prüfergebnis anzeigen
+- „noch nicht geprüft“ als Scan-Hinweis verdeutlicht
+
 ## V61 – TSE-Dolibarr-Abgleich
 
 - exakter TSE-ID-/Seriennummernabgleich mit Dolibarr
