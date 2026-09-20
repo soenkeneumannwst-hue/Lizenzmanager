@@ -308,3 +308,21 @@ Technisch:
 - Vertragsnachkalkulation, Angebotskalkulation und interne PDF verwenden dieselbe Zykluslogik
 - der Hardware-/TSE-Ersatzzyklus bleibt davon getrennt und ist weiterhin nur eine interne Rückstellungs-/Planungsgröße
 - die automatische Softwarepflege von 15 % wird nur auf einmalig lizenzierte Software-/Modul-Neuwerte berechnet; monatliche/jährliche Abos erhöhen diesen Software-Neuwert nicht
+
+
+## V52 – Angebotsnummer JJMMTTAAA
+
+Neue Full-Service-Angebote erhalten die Angebotsnummer im Format **JJMMTTAAA**.
+
+Beispiel für den 20.09.2026:
+- 260920001
+- 260920002
+- 260920003
+
+Bedeutung:
+- JJ = zweistelliges Jahr
+- MM = Monat
+- TT = Tag
+- AAA = dreistellige, pro Kalendertag fortlaufende Nummer
+
+Die Tagesnummer startet jeweils wieder bei 001. Bestehende Angebotsnummern werden nicht rückwirkend geändert.
