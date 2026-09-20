@@ -340,3 +340,14 @@ Die Tagesnummer startet jeweils wieder bei 001. Bestehende Angebotsnummern werde
 - Kundenfassung ist als ANGEBOT gekennzeichnet; interne Fassung als INTERNE KALKULATION
 - aktuelle Briefpapierdaten: FALKE-KASSEN GmbH, Mozartstr. 3, 26215 Wiefelstede, +49 (0)4402-60696, falke-kassen.com
 - aktuell wird eine typografische FALKE-KASSEN Wortmarke verwendet, da im Repository noch keine Logo-Bilddatei hinterlegt ist
+
+
+## V54 – BusinessCard-Lieferantenbonus verständlich benannt
+
+- Navigation: **Lieferantenbonus** statt **Sonderboni**
+- Seitentitel: **Zusätzlicher BusinessCard-Lieferantenbonus**
+- Erklärung stellt ausdrücklich klar, dass dies **nicht** die monatliche BusinessCard-Gebühr ist
+- Aktionen und Statusmeldungen verwenden dieselbe Bezeichnung
+- Lieferantenbeleg-/Weiterberechnungsansichten wurden sprachlich angeglichen
+- Berichte zeigen **BC-Lieferantenbonus** statt **Sonderbonus**
+- Datenbanktabellen und Berechnungslogik bleiben unverändert; es handelt sich nur um eine UI-/Begriffsänderung
