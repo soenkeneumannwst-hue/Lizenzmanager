@@ -1,3 +1,13 @@
+## V53 – Briefpapier für Angebots-PDFs
+
+- A4-Briefpapier im Stil der POSCLOUD-Rechnungen
+- Firmenkopf mit FALKE-KASSEN Wortmarke und Kontaktdaten
+- Absenderzeile und Kundenanschriftenfeld
+- Dokumentdatenblock rechts
+- hervorgehobene Full-Service-Monatsrate
+- feste Fußzeile auf jeder Seite
+- identisches Grundlayout für Kunden-PDF und interne Kalkulations-PDF
+
 ## V52 – Angebotsnummer JJMMTTAAA
 
 - neue Full-Service-Angebote verwenden JJMMTTAAA
