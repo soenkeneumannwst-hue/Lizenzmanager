@@ -1,3 +1,14 @@
+## V55 – Dolibarr Phase 1
+
+- System → Dolibarr mit API-URL, verschlüsseltem API-Key und Verbindungstest
+- Kundenabgleich Dolibarr → Lizenzmanager mit fester Thirdparty-ID
+- eindeutiges Matching nach ID, E-Mail oder normalisiertem Namen
+- manuelle Verknüpfung und gezielte lokale Neuanlage
+- Dolibarr-Status in Kundenliste/Kundenakte
+- Rechnungen und Zahlungsstatus verknüpfter Kunden lesend anzeigen
+- Sync-Protokoll und Aufgabenkarte für API-Fehler
+- Phase 1 ohne Schreibzugriffe nach Dolibarr
+
 ## V54 – BusinessCard-Lieferantenbonus klar benannt
 
 - Sonderboni in der UI in Lieferantenbonus umbenannt
