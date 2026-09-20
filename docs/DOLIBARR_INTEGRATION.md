@@ -441,3 +441,15 @@ Neu:
 - Standard bleibt 0 = Entity des API-Benutzers
 
 Dolibarr 22.0 setzt ohne `DOLAPIENTITY` den API-Kontext auf die Entity des Benutzers. Die Thirdparty-API filtert Geschäftspartner über `getEntity('societe')`. Damit ist bei HTTP 200 + leerer Liste neben Benutzerrechten insbesondere ein falscher MultiCompany-/Entity-Kontext zu prüfen.
+
+
+## V58 – Diagnose-UI sichtbar und eindeutig
+
+Korrektur der Dolibarr-Adminseite:
+- API-Konfiguration in klar getrennte Bereiche aufgeteilt
+- Entity-ID 0 als Standard/Platzhalter sichtbar
+- Sync-Schalter und API-Key-löschen bleiben sichtbar
+- eigener Bereich **Verbindung und Diagnose**
+- **API-Diagnose** als primäre Aktion hervorgehoben
+- Verbindungstest, Geschäftspartner-Vorschau und Kundenabgleich weiterhin sichtbar
+- Hinweis: zunächst Entity-ID 0 lassen und API-Diagnose ausführen
