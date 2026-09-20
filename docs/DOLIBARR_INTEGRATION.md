@@ -465,3 +465,10 @@ V59 enthält deshalb kumulativ:
 - aktuelle Dolibarr-API-Hilfe mit Entity-Diagnose
 
 Nach Installation ggf. Browsercache mit Strg+F5 aktualisieren.
+
+
+## V60 – Entity-Hilfsfunktion ergänzt
+
+V57/V58/V59 enthielten im Dolibarr-Admin bereits das Feld `dolibarr_entity_id`, aber die Hilfsfunktion `dol_entity_id(PDO $pdo)` fehlte in `lib/Dolibarr.php`. Dadurch brach die Seite beim Rendern direkt nach der Beschriftung **Dolibarr Entity-ID** ab; nachfolgende Felder, Buttons und Diagnosebereiche wurden nicht mehr ausgegeben.
+
+V60 ergänzt die fehlende Funktion. Standardwert ist 0 = Entity des API-Benutzers.
