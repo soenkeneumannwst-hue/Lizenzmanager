@@ -420,3 +420,24 @@ Zusätzlich wird eine Zusammenfassung angezeigt:
 Der automatische Kundenabgleich bleibt sicher: Er verarbeitet ausschließlich Thirdparties, die in Dolibarr tatsächlich als Kunde gekennzeichnet sind. Nicht-Kunden sind nur in der Vorschau sichtbar und werden nicht automatisch in den lokalen Kundenstamm importiert.
 
 Auch der Verbindungstest verwendet jetzt mode=0. Dadurch hängt ein erfolgreicher REST-Verbindungstest nicht mehr davon ab, ob in Dolibarr mindestens ein Datensatz als Kunde markiert ist.
+
+
+## V57 – API-Diagnose und Entity-Kontext
+
+Da die Thirdparty-API trotz HTTP 200 keine Geschäftspartner lieferte, obwohl die Berechtigungen korrekt gesetzt wurden, wurde eine Diagnose ergänzt.
+
+Neu:
+- Button **API-Diagnose** unter System → Dolibarr
+- liest `GET /users/info?includepermissions=1` für den tatsächlich zum API-Key gehörenden Benutzer
+- zeigt Benutzer-ID, Login, Entity, socid, Adminstatus und Status
+- vergleicht Thirdparty-Aufrufe:
+  - mode=0 ohne Pagination
+  - mode=1 nur Kunden
+  - mode=0 mit Pagination
+- technische REST-Antworten können aufgeklappt werden
+- Warnung, wenn der API-Benutzer eine `socid` besitzt und damit wahrscheinlich extern/beschränkt ist
+- Warnung, wenn der Thirdparty-Endpunkt HTTP 200 liefert, aber leer bleibt
+- optionales Feld **Dolibarr Entity-ID**; bei Wert > 0 wird der offizielle Header `DOLAPIENTITY` gesendet
+- Standard bleibt 0 = Entity des API-Benutzers
+
+Dolibarr 22.0 setzt ohne `DOLAPIENTITY` den API-Kontext auf die Entity des Benutzers. Die Thirdparty-API filtert Geschäftspartner über `getEntity('societe')`. Damit ist bei HTTP 200 + leerer Liste neben Benutzerrechten insbesondere ein falscher MultiCompany-/Entity-Kontext zu prüfen.
