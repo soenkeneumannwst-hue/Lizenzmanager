@@ -1,3 +1,12 @@
+## V56 – Dolibarr Geschäftspartner-Vorschau
+
+- Vorschau liest alle Thirdparties mit mode=0
+- Typanzeige Kunde / Interessent / Lieferant / Sonstiger
+- Summenkarten für alle Geschäftspartner-Typen
+- Verbindungstest unabhängig vom Kundenkennzeichen
+- automatischer Sync bleibt auf echte Dolibarr-Kunden beschränkt
+- Nicht-Kunden werden nicht automatisch lokal importiert
+
 ## V55 – Dolibarr Phase 1
 
 - System → Dolibarr mit API-URL, verschlüsseltem API-Key und Verbindungstest
