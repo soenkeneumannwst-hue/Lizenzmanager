@@ -1,3 +1,15 @@
+## V65 – QUAD-Rechnung → Dolibarr-Kunde + Dokument
+
+- QUAD automatisch erkennen
+- Lieferanschrift als Endkunde auswerten
+- ZUGFeRD/Factur-X/XRechnung bevorzugt strukturiert lesen
+- fehlenden Endkunden lokal und in Dolibarr automatisch anlegen
+- Dolibarr-Kundennummer zurück in den Lizenzmanager übernehmen
+- Original-PDF direkt am Dolibarr-Kunden ablegen
+- E-Rechnungs-XML zusätzlich am Kunden ablegen
+- Syncstatus/Fehler pro Beleg und Kunde protokollieren
+- manueller Wiederholungsbutton in der Eingangsrechnung
+
 ## V64 – Systemkunden-Abgleich Dolibarr
 
 - SystemKunde als führendes Aktiv-Kennzeichen
