@@ -1,3 +1,14 @@
+## V64 – Systemkunden-Abgleich Dolibarr
+
+- SystemKunde als führendes Aktiv-Kennzeichen
+- EUCASOFT/CASPOS über Dolibarr-Kategorien
+- neue Seite Stammdaten → Systemkunden-Abgleich
+- Dolibarr-Kundennummer wird als führende Kundennummer übernommen
+- Matching nach Dolibarr-ID, Kundennummer, E-Mail, Name
+- eindeutige fehlende aktive Systemkunden können lokal angelegt werden
+- Konflikte/Mehrfachtreffer werden nicht automatisch überschrieben
+- keine automatische Kundenlöschung
+
 ## V63 – TSE Hardware-ID / Seriennummer getrennt
 
 - Hardware-ID und technische TSE-Seriennummer als getrennte Stammdatenfelder
