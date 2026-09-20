@@ -453,3 +453,15 @@ Korrektur der Dolibarr-Adminseite:
 - **API-Diagnose** als primäre Aktion hervorgehoben
 - Verbindungstest, Geschäftspartner-Vorschau und Kundenabgleich weiterhin sichtbar
 - Hinweis: zunächst Entity-ID 0 lassen und API-Diagnose ausführen
+
+
+## V59 – Dolibarr-Navigation kumulativ korrigiert
+
+V58 enthielt nur die Diagnose-Dateien. Wenn zuvor noch eine ältere `_layout_top.php` aktiv war, erschien **System → Dolibarr** nicht im Menü.
+
+V59 enthält deshalb kumulativ:
+- `public/admin/_layout_top.php` mit Menüpunkt **System → Dolibarr**
+- aktuelle Dolibarr-Diagnoseseite
+- aktuelle Dolibarr-API-Hilfe mit Entity-Diagnose
+
+Nach Installation ggf. Browsercache mit Strg+F5 aktualisieren.
