@@ -511,3 +511,19 @@ Neu:
 - Status `noch nicht geprüft` weist nun ausdrücklich auf **Scan starten** hin
 
 Sicherheitsregel bleibt unverändert: Kunden werden niemals aufgrund eines ähnlichen Namens oder eines nur teilweise passenden Seriennummernfragments automatisch zugewiesen.
+
+
+## V63 – Hardware-ID und TSE-Seriennummer getrennt
+
+Die TSE-Stammdaten orientieren sich jetzt am realen Swissbit-TSE-Aufkleber und unterscheiden ausdrücklich zwischen:
+- Hardware-ID, z. B. `602884530157-2326-5`
+- technischer TSE-Seriennummer, z. B. einem 64-stelligen Hexwert
+- Hersteller
+- HW-Version
+- SW-Version
+- Zertifikat gültig bis
+- Kassen-Seriennummer
+
+Bestehende Altwerte werden automatisch klassifiziert: Hardware-ID-Muster landen in `hardware_id`, lange Hexwerte in `tse_serial_number`. Nicht klassifizierbare Platzhalter wie `1` bleiben als Altwert sichtbar, werden aber nicht mehr für den Dolibarr-Abgleich verwendet.
+
+Der Dolibarr-Abgleich prüft Hardware-ID und TSE-Seriennummer getrennt. Ein zusätzlicher Präfix wie `607645-` wird nur beim Hardware-ID-Vergleich ignoriert; der eigentliche Hardware-ID-Kern muss exakt stimmen. Technische TSE-Seriennummern werden ebenfalls exakt verglichen und auch erkannt, wenn ein 64-stelliger Hexwert im Freitext über zwei Zeilen verteilt ist.
