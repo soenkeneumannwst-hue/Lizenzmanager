@@ -1,3 +1,10 @@
+## V58 – Dolibarr Diagnose-UI Fix
+
+- Diagnose-/Aktionsbuttons wieder dauerhaft sichtbar
+- Entity-ID 0 klar als Standard
+- API-Diagnose als primäre Aktion hervorgehoben
+- Konfiguration und Diagnose optisch getrennt
+
 ## V57 – Dolibarr API-Diagnose / Entity
 
 - API-Diagnose zeigt tatsächlichen API-Benutzer, Entity, socid und Status
