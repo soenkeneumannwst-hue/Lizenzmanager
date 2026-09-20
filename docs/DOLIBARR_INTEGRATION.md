@@ -399,3 +399,24 @@ Phase 1 ist im Lizenzmanager als read-first Integration umgesetzt:
 - BusinessCard-Lieferantenbonus-Seite verlinkt bei verbundenen Kunden auf die Dolibarr-Rechnungsansicht
 
 Phase 1 schreibt bewusst **keine Rechnungen oder Kundenänderungen nach Dolibarr**. Nach erfolgreichem produktivem Verbindungstest folgt Phase 2 mit Rechnungsentwürfen, eindeutigen Rechnungslinks und automatischer Zahlungsrückmeldung.
+
+
+## V56 – Geschäftspartner-Vorschau statt leerem Kundenfilter
+
+Die Dolibarr-Vorschau liest jetzt bewusst **alle Thirdparties mit mode=0** und zeigt deren Typkennzeichen an.
+
+Anzeige je Dolibarr-Datensatz:
+- Dolibarr-ID
+- Name / E-Mail
+- Kundennummer
+- Kunde ja/nein
+- Interessent ja/nein
+- Lieferant ja/nein
+- lokale Zuordnung und Erkennungsgrund
+
+Zusätzlich wird eine Zusammenfassung angezeigt:
+**Geschäftspartner gesamt · Kunden · Interessenten · Lieferanten · Sonstige**.
+
+Der automatische Kundenabgleich bleibt sicher: Er verarbeitet ausschließlich Thirdparties, die in Dolibarr tatsächlich als Kunde gekennzeichnet sind. Nicht-Kunden sind nur in der Vorschau sichtbar und werden nicht automatisch in den lokalen Kundenstamm importiert.
+
+Auch der Verbindungstest verwendet jetzt mode=0. Dadurch hängt ein erfolgreicher REST-Verbindungstest nicht mehr davon ab, ob in Dolibarr mindestens ein Datensatz als Kunde markiert ist.
