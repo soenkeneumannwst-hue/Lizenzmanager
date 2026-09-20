@@ -1,3 +1,11 @@
+## V57 – Dolibarr API-Diagnose / Entity
+
+- API-Diagnose zeigt tatsächlichen API-Benutzer, Entity, socid und Status
+- mode=0/mode=1 sowie paginierte Thirdparty-Aufrufe werden getrennt geprüft
+- technische REST-Antworten aufklappbar
+- optionale Dolibarr Entity-ID mit DOLAPIENTITY-Header
+- Diagnosehinweis für externen Benutzer oder falschen MultiCompany-/Entity-Kontext
+
 ## V56 – Dolibarr Geschäftspartner-Vorschau
 
 - Vorschau liest alle Thirdparties mit mode=0
