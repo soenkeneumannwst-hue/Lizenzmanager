@@ -1,3 +1,9 @@
+## V60 – Dolibarr Entity-Helper Fix
+
+- fehlende Funktion dol_entity_id() ergänzt
+- PHP-Abbruch direkt nach „Dolibarr Entity-ID“ behoben
+- Diagnose-/Aktionsbuttons werden wieder gerendert
+
 ## V59 – Dolibarr-Navigation
 
 - System-Menü enthält Dolibarr wieder zuverlässig
