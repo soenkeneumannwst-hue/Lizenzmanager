@@ -1,3 +1,12 @@
+## V61 – TSE-Dolibarr-Abgleich
+
+- exakter TSE-ID-/Seriennummernabgleich mit Dolibarr
+- Geschäftspartner/Extrafields und Kundenrechnungen/Positionen werden geprüft
+- Serien aus Lizenzdaten werden in den zentralen TSE-Bestand gespiegelt
+- eindeutige Zuordnung kann übernommen werden
+- Konflikte und Mehrfachtreffer werden nie automatisch überschrieben
+- Dolibarr-Rechnungsreferenz und Prüfhistorie am TSE-Datensatz
+
 ## V60 – Dolibarr Entity-Helper Fix
 
 - fehlende Funktion dol_entity_id() ergänzt
