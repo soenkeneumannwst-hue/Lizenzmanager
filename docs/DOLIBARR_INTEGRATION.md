@@ -723,3 +723,15 @@ FALKE-Ausgangsrechnungen liefern zusätzliche Stammdaten, die beim Kundenabgleic
 - direkter Ausgangsrechnungsimport und Dokumenten-Massenimport verwenden dieselbe TSE-Logik.
 
 Beispiel A008-G26478: Pizzeria Asado / Ghassan Hasso / Hauptstraße 35 / 26215 Wiefelstede, Hardware-ID `602869721347-1926-5`, Zertifikat bis 07.08.2031 und technische TSE-Seriennummer aus dem Rechnungsfuß.
+
+
+## V73 – Dolibarr-500 / Dubletten / Rechnungsdatum
+
+- Dolibarr-HTML-Fehlerseiten bei HTTP 5xx werden nicht mehr vollständig im UI ausgegeben.
+- Temporäre Dolibarr-Fehler (500/502/503/504, Timeout, Verbindungsfehler) werden bis zu drei Mal automatisch erneut versucht und blockieren die Queue nicht.
+- Alte V72-HTML-500-Fehler werden automatisch wieder in die Warteschlange gestellt.
+- Wiederkehrende Kunden werden zusätzlich über bereits bestätigte Dokumentzuordnungen erkannt.
+- Historisch bestätigte FALKE-Kundennummern aus Ausgangsrechnungen werden als starker Match verwendet.
+- Bei gleich guten lokalen Dublettenkandidaten wird ein eindeutig mit Dolibarr verknüpfter kanonischer Kunde bevorzugt.
+- Das Rechnungsdatum wird nur noch gezielt aus `Rechnungsdatum:` bzw. dem FALKE-Kopf `Wiefelstede, den` gelesen; TSE-Zertifikatsdaten können nicht mehr als Rechnungsdatum übernommen werden.
+- Bereits vorhandene PDFs können erneut hochgeladen werden: der SHA-256-Dublettenschutz bleibt aktiv, aber Erkennungsmetadaten werden mit dem aktuellen Parser aktualisiert und nicht abgeschlossene Belege erneut eingereiht.
