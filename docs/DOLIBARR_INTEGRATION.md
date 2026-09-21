@@ -658,3 +658,21 @@ Korrekturen nach dem ersten größeren V68-Import:
 - Bereits vorhandene Importzeilen werden beim Öffnen des Dokumentenimports bereinigt, wenn der Firmenname ausschließlich aus zwei exakt identischen Hälften besteht.
 
 Die Bereinigung führt **keine automatische Kunden-Zusammenführung** durch. Bestehende Kundenzuordnungen und Dolibarr-IDs bleiben unverändert.
+
+
+## V70 – Alias-/Betriebsnamen beim Kundenabgleich
+
+Feldbeispiele haben gezeigt, dass verschiedene Namen nicht automatisch verschiedene Kunden bedeuten:
+- **Cuk Qenja GbR** kann in Dolibarr den Alias/Betriebsnamen **Restaurant Slavija** führen.
+- **Manco GmbH** kann einen zusätzlichen/alten Betriebsnamen wie **Restaurant Perla (ehemals Wedelstaedt)** besitzen.
+
+V70-Regeln:
+- Dolibarr-Feld `name_alias` wird beim Abgleich berücksichtigt.
+- Lokale `customer_aliases` werden beim Kundenmatching berücksichtigt.
+- Name und Alias eines Kunden werden als **ein Kandidat** gewertet.
+- Dolibarr-Ergebnisse werden vor der Bewertung nach eindeutiger Thirdparty-ID zusammengeführt.
+- Wenn lokal kein Treffer existiert, wird **vor jeder Neuanlage zuerst Dolibarr** nach offiziellem Namen, Alias und Anschrift geprüft.
+- Ein gefundener Dolibarr-Kunde wird möglichst mit einem vorhandenen lokalen Kunden verknüpft, bevor lokal ein neuer Datensatz entsteht.
+- Der im Dokument erkannte Betriebsname wird nach erfolgreicher Zuordnung als Alias gelernt.
+- Nur wenn tatsächlich mehrere **verschiedene Dolibarr-IDs** plausibel passen, bleibt der Beleg bei manueller Dublettenprüfung.
+- Bestehende Fehlerbelege können mit **erneut prüfen** ohne erneuten Upload neu bewertet werden.
