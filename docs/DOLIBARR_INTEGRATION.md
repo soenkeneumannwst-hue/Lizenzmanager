@@ -586,3 +586,44 @@ Der E-Mail-Importer archiviert neben PDFs auch vorhandene Rechnungs-XML-Anhänge
 Für V65 braucht der technische Dolibarr-API-Benutzer zusätzlich zu den Leserechten:
 - Geschäftspartner erstellen/bearbeiten
 - Dokumente beim Geschäftspartner hochladen
+
+
+## V67 – Dokumenten-Massenimport und automatische Belegerkennung
+
+Neuer zentraler Bereich **Einkauf → Dokumentenimport** für große Mengen an Belegen.
+
+Unterstützte Belegarten:
+- Eingangsrechnung
+- Ausgangsrechnung
+- Lieferschein
+- Auftrag / Auftragsbestätigung
+
+Ablauf:
+1. Mehrere PDF/XML-Dateien oder ein kompletter Ordner werden ausgewählt bzw. per Drag&Drop übergeben.
+2. Die Dateien werden browserseitig einzeln analysiert und anschließend einzeln hochgeladen, damit PHP-Limits wie `max_file_uploads` und `post_max_size` bei großen Mengen nicht zum Flaschenhals werden.
+3. Belegart, Richtung (eingehend/ausgehend), Belegnummer, Datum, Liefer-/Kundenanschrift und vorhandenes E-Rechnungs-XML werden erkannt.
+4. Vor jeder Kunden-Neuanlage läuft der V66-Dublettenschutz.
+5. Eindeutige Belege werden automatisch dem vorhandenen bzw. eindeutig neu anzulegenden Kunden zugeordnet und als Dokument bei Dolibarr hinterlegt.
+6. FALKE-Ausgangsrechnungen können weiterhin als Dolibarr-Rechnungsentwurf angelegt werden; das Original-PDF bleibt zusätzlich als Anhang erhalten.
+7. Unsichere Fälle werden niemals automatisch einem neuen Kunden zugeordnet.
+
+### Sicherheitsregel: eigene Lieferadresse
+Die eigene Lieferadresse ist auf der Importseite konfigurierbar (Standard: **FALKE-KASSEN GmbH, Mozartstr. 3, 26215 Wiefelstede**).
+
+Wird diese Anschrift bei einem **eingehenden Lieferantenbeleg als Lieferanschrift** erkannt, wird der Beleg bewusst beiseitegelegt:
+- Status **Manuell zuordnen**
+- kein automatischer Kunde
+- keine automatische Dolibarr-Neuanlage
+- bestehender Kunde wird anschließend über eine Auswahlliste zugeordnet
+- danach wird das Original-PDF/XML beim ausgewählten Dolibarr-Kunden gespeichert
+
+Damit verhält sich dieser Fall ähnlich wie die manuelle TSE-Zuordnung.
+
+Weitere Fälle für die manuelle Prüfliste:
+- mögliche Kundendublette
+- kein eindeutiger Kunde aus dem Beleg erkennbar
+- Belegart nicht sicher klassifizierbar
+- technischer Übertragungsfehler
+
+### E-Rechnungen
+ZUGFeRD/Factur-X/XRechnung wird bevorzugt aus strukturiertem XML gelesen. Bei eingebettetem XML werden Liefer-/Käuferdaten und Belegnummer zuerst daraus übernommen. Standalone-XML-Dateien werden ebenfalls akzeptiert.
