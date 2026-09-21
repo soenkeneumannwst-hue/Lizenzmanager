@@ -1,3 +1,11 @@
+## V69 – Dokumentenimport Status/Namen
+
+- queued ist nicht mehr gleichzeitig „erledigt“
+- nur assigned zeigt erfolgreichen Dolibarr-Abschluss
+- Warteschlangen-Belege können einzeln verarbeitet werden
+- doppelt erkannte Firmennamen werden sicher normalisiert
+- vorhandene Importzeilen werden ohne Kunden-Merge bereinigt
+
 ## V68 – Stabiler Dokumenten-Massenimport
 
 - Upload und Dolibarr-Verarbeitung in getrennte Requests aufgeteilt
