@@ -735,3 +735,33 @@ Beispiel A008-G26478: Pizzeria Asado / Ghassan Hasso / Hauptstraße 35 / 26215 W
 - Bei gleich guten lokalen Dublettenkandidaten wird ein eindeutig mit Dolibarr verknüpfter kanonischer Kunde bevorzugt.
 - Das Rechnungsdatum wird nur noch gezielt aus `Rechnungsdatum:` bzw. dem FALKE-Kopf `Wiefelstede, den` gelesen; TSE-Zertifikatsdaten können nicht mehr als Rechnungsdatum übernommen werden.
 - Bereits vorhandene PDFs können erneut hochgeladen werden: der SHA-256-Dublettenschutz bleibt aktiv, aber Erkennungsmetadaten werden mit dem aktuellen Parser aktualisiert und nicht abgeschlossene Belege erneut eingereiht.
+
+
+## V75 – Einheitliche Dokumenten-Pipeline / Lieferantenrouting
+
+Ab V75 entscheidet **nicht mehr der Eingangskanal** über die Fachverarbeitung. E-Mail und Datei-/Massen-Upload verwenden dieselben Lieferantenparser und dieselben Zielprozesse.
+
+### CASPOS / EUCASOFT
+- E-Mail und Upload verwenden den gemeinsamen Parser `supplier_invoice_parser_unified.js`.
+- Beide Wege laufen anschließend über dieselbe Lizenz-/Rechnungsprüfung in `supplier_invoices.php`.
+- Bestehende Fachlogik für Anwender/Kunden, Dongle, Lizenz-Code, TSE, BusinessCard, Kontingente, Auftragsreferenzen und Weiterberechnung bleibt erhalten.
+- Erfolgreiche CASPOS/EUCASOFT-Belege werden zusätzlich in `document_intake_items` gespiegelt, damit eine zentrale Dokumenthistorie besteht.
+
+### QUAD
+- QUAD ist **Dolibarr-only**.
+- Es wird **kein neuer lokaler Lizenzmanager-Kunde** erzeugt.
+- Es wird **keine Lizenzmanager-Eingangsrechnung / Rechnungsprüfung** angelegt.
+- Lieferanschrift/Endkunde wird ausschließlich gegen Dolibarr geprüft; ein fehlender Geschäftspartner darf dort neu angelegt werden.
+- PDF und vorhandenes E-Rechnungs-XML werden beim Dolibarr-Geschäftspartner archiviert.
+- Neue QUAD-Importe über `supplier_invoices.php` werden serverseitig abgefangen.
+- Bei unklarer Zuordnung kann eine Dolibarr-Thirdparty-ID manuell gesetzt werden, ohne lokalen Lizenzkunden anzulegen.
+
+### Andere eingehende Lieferantendokumente
+- Standardroute ist ebenfalls Dolibarr-only.
+- Ohne eindeutigen Endkunden bleibt der Beleg zur manuellen Prüfung liegen.
+- Automatische lokale Lizenzkunden-Neuanlage erfolgt nur in den ausdrücklich dafür vorgesehenen Fachwegen.
+
+### FALKE-Ausgangsrechnungen
+Der V72/V73-Weg bleibt bestehen: lokaler Kundenabgleich, Dolibarr-Ausgangsrechnung/Dokument, TSE-Erkennung und Stammdatenanreicherung.
+
+Bestehende historische QUAD-Datensätze werden aus Sicherheitsgründen nicht automatisch gelöscht oder zusammengeführt; V75 verhindert die unerwünschte Neuanlage künftig.
