@@ -1,3 +1,14 @@
+## V75 – Unified Document Pipeline
+
+- E-Mail und Upload verwenden dieselbe Lieferanten-Parsing-/Fachlogik
+- CASPOS/EUCASOFT → zentrale Lizenz-/Rechnungsprüfung
+- CASPOS/EUCASOFT-Belege zusätzlich in document_intake_items gespiegelt
+- QUAD → ausschließlich Dolibarr, kein neuer Lizenzmanager-Kunde, keine Lizenzmanager-Rechnung
+- andere Lieferanten standardmäßig Dolibarr-only
+- manuelle Dolibarr-ID-Zuordnung für Dolibarr-only-Fälle
+- neue QUAD-Importe in supplier_invoices serverseitig gesperrt
+- bestehende historische QUAD-Daten werden nicht automatisch gelöscht
+
 ## V74 – CASPOS/EUCASOFT Lizenzpreise + Updatekosten
 
 - Hersteller-Artikelnummer an Produkten/Lizenzen ergänzt
