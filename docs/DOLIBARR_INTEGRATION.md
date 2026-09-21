@@ -644,3 +644,17 @@ Folgen:
 - Netzwerkfehler werden einmal automatisch wiederholt;
 - der SHA-256-Dublettenschutz verhindert beim Wiederholen eine zweite Ablage derselben Datei;
 - bei großen Stapeln werden zuerst alle Dateien sicher hochgeladen und erst danach verarbeitet.
+
+
+## V69 – Statusmodell und Namensbereinigung im Dokumentenimport
+
+Korrekturen nach dem ersten größeren V68-Import:
+- `queued` wird in der Importliste nicht mehr gleichzeitig als erledigt dargestellt.
+- Nur `assigned` erhält den sichtbaren Abschlussstatus **✓ In Dolibarr gespeichert / erledigt**.
+- `queued` wird als **⏳ Warteschlange** dargestellt und kann einzeln über **jetzt verarbeiten** gestartet werden.
+- Manuelle Zuordnung, mögliche Dublette und Fehler erhalten eigene verständliche Statusdarstellungen.
+- Exakt doppelt erkannte Firmennamen wie `Deutsche Post AG Deutsche Post AG` werden auf `Deutsche Post AG` normalisiert.
+- Die Namensnormalisierung erfolgt sowohl im Browser-Parser als auch serverseitig vor der Speicherung.
+- Bereits vorhandene Importzeilen werden beim Öffnen des Dokumentenimports bereinigt, wenn der Firmenname ausschließlich aus zwei exakt identischen Hälften besteht.
+
+Die Bereinigung führt **keine automatische Kunden-Zusammenführung** durch. Bestehende Kundenzuordnungen und Dolibarr-IDs bleiben unverändert.
