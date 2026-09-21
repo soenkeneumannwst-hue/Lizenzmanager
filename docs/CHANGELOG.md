@@ -1,3 +1,13 @@
+## V72 – Ausgangsrechnungen Kundendaten/TSE
+
+- Empfängeradresse positionsbezogen lesen
+- Ansprechpartner nicht mehr als Straße übernehmen
+- führende Nullen bei Kundennummern nur fürs Matching ignorieren
+- vorhandener Dolibarr-Stamm bleibt führend
+- TSE Hardware-ID / Seriennummer / Ablaufdatum aus Ausgangsrechnung übernehmen
+- TSE dem Kunden zuordnen
+- identische PDFs können zur Metadaten-Neuanalyse erneut hochgeladen werden
+
 ## V71 – Warteschlangen-Autoworker
 
 - Queue verarbeitet immer den nächsten Beleg frisch aus der DB
