@@ -1,3 +1,13 @@
+## V76 – Kundenwahl + Belegdaten bearbeiten
+
+- gemeinsame Kundensuche über Lizenzmanager und Dolibarr
+- Quelle und bestehende Verknüpfung sichtbar
+- gewählten Kunden mit „Übernehmen“ sofort zuordnen
+- Dolibarr-Kunde kann bei Ausgangsrechnung sicher lokal gespiegelt werden
+- neuer Kunde aus Belegdaten möglich, Dublettenschutz bleibt aktiv
+- QUAD-Neuanlage bleibt ausschließlich Dolibarr
+- Belegart, Datum, Firma, Adresse, Kundennummer und Beträge manuell korrigierbar
+
 ## V75 – Unified Document Pipeline
 
 - E-Mail und Upload verwenden dieselbe Lieferanten-Parsing-/Fachlogik
