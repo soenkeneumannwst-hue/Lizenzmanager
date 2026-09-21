@@ -1,3 +1,12 @@
+## V68 – Stabiler Dokumenten-Massenimport
+
+- Upload und Dolibarr-Verarbeitung in getrennte Requests aufgeteilt
+- Status/Warteschlange für sicher gespeicherte Belege
+- Verbindungsabbruch verliert keine bereits hochgeladene Datei mehr
+- Upload- und Verarbeitungsfehler getrennt
+- automatischer einmaliger Netzwerk-Retry
+- Button „Warteschlange verarbeiten“
+
 ## V67 – Dokumenten-Massenimport
 
 - zentraler Massenupload für PDF/XML
