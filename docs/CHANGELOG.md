@@ -1,3 +1,14 @@
+## V78 – Zweite Angebotsvariante: Kauf + Einzelpreise
+
+- Full-Service-Angebot bleibt als Variante 1 unverändert erhalten
+- neues Kunden-PDF „Kaufvariante mit Einzelpreisen“
+- klare Trennung: Hardware, Software, monatliche Update-/Softwarekosten, Einrichtung/Programmierung, Support
+- einmalige und monatliche Gesamtsummen getrennt
+- Verkaufspreise werden aus calc_vk/Preisstamm übernommen
+- bei alten Dienstleistungspositionen ohne VK gilt als Fallback der vereinbarte Kunden-Stundensatz 86 EUR
+- MediaPOS-Vorlage: TSE 289 EUR, Programmierung 6 x 86 EUR = 516 EUR, Installation 3 x 86 EUR = 258 EUR
+- Kaufvariante wird separat versioniert und archiviert
+
 ## V77 – Angebotskalkulation wiederhergestellt
 
 - Angebots-/Full-Service-Dateien aus V44–V54 wieder in den aktuellen Patchstand aufgenommen
