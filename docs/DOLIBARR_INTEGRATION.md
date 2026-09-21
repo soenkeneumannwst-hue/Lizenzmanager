@@ -676,3 +676,19 @@ V70-Regeln:
 - Der im Dokument erkannte Betriebsname wird nach erfolgreicher Zuordnung als Alias gelernt.
 - Nur wenn tatsächlich mehrere **verschiedene Dolibarr-IDs** plausibel passen, bleibt der Beleg bei manueller Dublettenprüfung.
 - Bestehende Fehlerbelege können mit **erneut prüfen** ohne erneuten Upload neu bewertet werden.
+
+
+## V71 – Warteschlangen-Autoworker
+
+Die Dokumentenwarteschlange verarbeitet jetzt immer genau **einen** gespeicherten Beleg pro Serveraufruf und holt danach den nächsten frisch aus der Datenbank. Dadurch stoppt ein einzelner problematischer Beleg nicht mehr den gesamten Stapel.
+
+Neu:
+- Endpoint `process_next` reserviert atomar den nächsten `queued`-Beleg und setzt ihn zunächst auf `processing`.
+- Erfolgreiche Zuordnung endet in `assigned`; unklare Fälle bleiben als manueller Status liegen; technische Fehler werden als `error` markiert.
+- Ein fehlerhafter Beleg liefert dem Queue-Worker trotzdem eine verwertbare Antwort, sodass unmittelbar der nächste Beleg folgt.
+- Vorhandene Warteschlange startet beim Öffnen der Dokumentenimport-Seite automatisch.
+- Nach einem Massen-Upload startet derselbe Worker automatisch und verarbeitet auch ältere wartende Belege.
+- **Warteschlange verarbeiten** setzt den Worker jederzeit fort.
+- `processing` ist als eigener sichtbarer Status vorhanden.
+- Nach einem abgebrochenen Request werden mehr als 10 Minuten alte `processing`-Einträge wieder auf `queued` gesetzt.
+- Netzwerkfehler werden mehrfach wiederholt; gespeicherte Dateien bleiben erhalten.
