@@ -707,3 +707,19 @@ Wesentliche Regeln:
 - FALKE-Ausgangsrechnungen erkennen Hardware-ID, technische TSE-Seriennummer und Zertifikatsablaufdatum.
 - Erkannte TSEs werden nach erfolgreicher Kundenzuordnung dem zentralen `tse_devices`-Bestand zugeordnet. Bereits einem anderen Kunden zugeordnete TSEs werden nicht automatisch umgehängt.
 - Identische bereits importierte PDFs können erneut hochgeladen werden: Metadaten werden aktualisiert und der Beleg erneut eingereiht, ohne Rechnung/Dokument doppelt anzulegen.
+
+
+## V72 – Ausgangsrechnungen: Adresse und TSE übernehmen
+
+FALKE-Ausgangsrechnungen liefern zusätzliche Stammdaten, die beim Kundenabgleich genutzt werden:
+- Empfängerblock wird getrennt in Firma, Ansprechpartner, Straße, PLZ und Ort.
+- FALKE-Absender-/Telefon-/Faxdaten dürfen nicht als Kundenstraße übernommen werden.
+- Kundenstamm erhält ein eigenes Feld `contact_name`.
+- Offensichtlich falsch importierte Straßen (Telefon/Fax/Webdaten im Straßenfeld) dürfen bei erneutem Import durch die sauber erkannte Rechnungsanschrift repariert werden.
+- Ausgangsrechnungen werden auf TSE-Daten geprüft: Hardware-ID, technische TSE-Seriennummer, Zertifikatsablauf und Hersteller.
+- erkannte TSE wird im zentralen `tse_devices`-Bestand dem Rechnungskunden zugeordnet.
+- bestehende TSE-Einträge werden ergänzt und nicht dupliziert.
+- eine bereits einem anderen Kunden zugeordnete TSE wird niemals automatisch umgehängt.
+- direkter Ausgangsrechnungsimport und Dokumenten-Massenimport verwenden dieselbe TSE-Logik.
+
+Beispiel A008-G26478: Pizzeria Asado / Ghassan Hasso / Hauptstraße 35 / 26215 Wiefelstede, Hardware-ID `602869721347-1926-5`, Zertifikat bis 07.08.2031 und technische TSE-Seriennummer aus dem Rechnungsfuß.
