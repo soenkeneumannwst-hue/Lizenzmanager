@@ -1,3 +1,15 @@
+## V67 – Dokumenten-Massenimport
+
+- zentraler Massenupload für PDF/XML
+- automatische Erkennung von Eingangsrechnung, Ausgangsrechnung, Lieferschein und Auftrag
+- eingehend/ausgehend getrennt
+- Ordnerauswahl und Drag&Drop
+- eigene FALKE-Lieferadresse erzwingt manuelle Kundenzuordnung
+- Dubletten/unklare Kunden werden nie automatisch neu angelegt
+- eindeutige Belege werden als Kundenanhang in Dolibarr gespeichert
+- Ausgangsrechnungen können als Dolibarr-Rechnungsentwurf angelegt werden
+- E-Rechnungs-XML wird bevorzugt strukturiert ausgewertet
+
 ## V65 – QUAD-Rechnung → Dolibarr-Kunde + Dokument
 
 - QUAD automatisch erkennen
