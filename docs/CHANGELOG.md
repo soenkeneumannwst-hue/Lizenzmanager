@@ -1,3 +1,14 @@
+## V74 – CASPOS/EUCASOFT Lizenzpreise + Updatekosten
+
+- Hersteller-Artikelnummer an Produkten/Lizenzen ergänzt
+- Systemfamilie: EUCASOFT, CASPOS, CASPOS + EUCASOFT, Sonstiges
+- Updatefähigkeit pro Produkt/Lizenz schaltbar
+- Preisliste zeigt Hersteller-Art.-Nr., System, EK und Neupreis/VK
+- zentrale Updatekostenregeln je CASPOS-/EUCASOFT-Softwarehaus
+- Berechnung vom aktuellen Neupreis/VK: 1J 15 %, 2J 30 %, 3J 45 %, 4J 60 %, 5J 90 %
+- 5-Jahres-Regel bewusst 90 % und nicht linear 75 %
+- Schemaerweiterung idempotent über die PHP-Seiten; zusätzliche Migration 074 vorgesehen
+
 ## V73 – Dokumentenimport Stabilität / Matching
 
 - Dolibarr-HTTP-500 und HTML-Fehlerseiten kompakt behandeln
