@@ -1,3 +1,12 @@
+## V72 – Ausgangsrechnung: Adresse + TSE
+
+- Empfängerblock sauber in Firma/Ansprechpartner/Straße/PLZ/Ort getrennt
+- FALKE-Telefon-/Faxdaten werden nicht mehr als Kundenstraße übernommen
+- Ansprechpartner-Feld im Kundenstamm
+- TSE Hardware-ID, technische Seriennummer, Ablaufdatum und Hersteller aus Ausgangsrechnung
+- TSE wird automatisch dem Rechnungskunden zugeordnet
+- TSE-Konflikte werden nicht automatisch umgehängt
+
 ## V72 – Ausgangsrechnungen Kundendaten/TSE
 
 - Empfängeradresse positionsbezogen lesen
