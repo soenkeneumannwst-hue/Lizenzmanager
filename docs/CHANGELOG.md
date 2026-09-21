@@ -1,3 +1,13 @@
+## V73 – Dokumentenimport Stabilität / Matching
+
+- Dolibarr-HTTP-500 und HTML-Fehlerseiten kompakt behandeln
+- temporäre Dolibarr-Fehler automatisch erneut versuchen
+- alte 500-Fehler wieder in Queue einreihen
+- bestätigte Dokumentzuordnungen und FALKE-Kundennummern fürs Matching nutzen
+- kanonisch mit Dolibarr verknüpften Kunden bei Gleichstand bevorzugen
+- TSE-Zertifikatsdatum kann nicht mehr als Rechnungsdatum erscheinen
+- Reupload derselben PDF aktualisiert Erkennungsmetadaten ohne Doppelübertragung
+
 ## V72 – Ausgangsrechnung: Adresse + TSE
 
 - Empfängerblock sauber in Firma/Ansprechpartner/Straße/PLZ/Ort getrennt
