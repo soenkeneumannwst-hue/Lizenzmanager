@@ -692,3 +692,18 @@ Neu:
 - `processing` ist als eigener sichtbarer Status vorhanden.
 - Nach einem abgebrochenen Request werden mehr als 10 Minuten alte `processing`-Einträge wieder auf `queued` gesetzt.
 - Netzwerkfehler werden mehrfach wiederholt; gespeicherte Dateien bleiben erhalten.
+
+
+## V72 – Ausgangsrechnungen: Stammdatenschutz, Kundennummern und TSE
+
+Ausgangsrechnungen werden jetzt robuster gegen den bestehenden Dolibarr-Stamm abgeglichen.
+
+Wesentliche Regeln:
+- Empfängeradresse wird positionsbezogen aus dem linken Adressblock gelesen; Ansprechpartner bleibt getrennt von der Straße.
+- FALKE-Telefon/Fax/E-Mail/Webseite dürfen nicht in Kundenadressen übernommen werden.
+- Numerische Kundennummern werden beim Matching ohne führende Nullen verglichen, z. B. `6340 == 06340`; gespeichert bleibt der originale Dolibarr-Code.
+- Belegdaten überschreiben keinen vorhandenen Kundenstamm mehr. Wird ein Dolibarr-Kunde gefunden, ist dessen Stammdatensatz führend und wird in den Lizenzmanager zurückgespiegelt.
+- Doppelte Firmennamen werden zusätzlich in `outgoing_invoice_imports` bereinigt.
+- FALKE-Ausgangsrechnungen erkennen Hardware-ID, technische TSE-Seriennummer und Zertifikatsablaufdatum.
+- Erkannte TSEs werden nach erfolgreicher Kundenzuordnung dem zentralen `tse_devices`-Bestand zugeordnet. Bereits einem anderen Kunden zugeordnete TSEs werden nicht automatisch umgehängt.
+- Identische bereits importierte PDFs können erneut hochgeladen werden: Metadaten werden aktualisiert und der Beleg erneut eingereiht, ohne Rechnung/Dokument doppelt anzulegen.
