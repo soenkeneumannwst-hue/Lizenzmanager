@@ -1,3 +1,12 @@
+## V77 – Angebotskalkulation wiederhergestellt
+
+- Angebots-/Full-Service-Dateien aus V44–V54 wieder in den aktuellen Patchstand aufgenommen
+- Vertrieb > Angebote bleibt erhalten
+- zusätzlicher direkter Menüpunkt Vertrieb > Angebotskalkulation
+- Full-Service-/Mietkalkulation, MediaPOS-100 Vorlage, PDFs und Verträge wieder enthalten
+- Update-Angebote weiterhin mit 1J 15 %, 2J 30 %, 3J 45 %, 4J 60 %, 5J 90 %
+- V76 Kundenwahl/Dokumentenimport bleibt vollständig enthalten
+
 ## V76 – Kundenwahl + Belegdaten bearbeiten
 
 - gemeinsame Kundensuche über Lizenzmanager und Dolibarr
