@@ -1,3 +1,13 @@
+## V70 – Alias-/Betriebsnamen beim Dokumentenimport
+
+- Dolibarr name_alias in Kundenmatching aufgenommen
+- lokale Kundenaliasse werden berücksichtigt
+- Treffer desselben Geschäftspartners nach Dolibarr-ID dedupliziert
+- Dolibarr wird vor lokaler Kunden-Neuanlage geprüft
+- erkannte Betriebsnamen werden nach erfolgreicher Zuordnung als Alias gelernt
+- manuelle Auswahl zeigt Aliasnamen an
+- bestehende Fehlerbelege können über „erneut prüfen“ neu ausgewertet werden
+
 ## V69 – Dokumentenimport Status/Namen
 
 - queued ist nicht mehr gleichzeitig „erledigt“
