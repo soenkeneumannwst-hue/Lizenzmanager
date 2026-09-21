@@ -627,3 +627,20 @@ Weitere Fälle für die manuelle Prüfliste:
 
 ### E-Rechnungen
 ZUGFeRD/Factur-X/XRechnung wird bevorzugt aus strukturiertem XML gelesen. Bei eingebettetem XML werden Liefer-/Käuferdaten und Belegnummer zuerst daraus übernommen. Standalone-XML-Dateien werden ebenfalls akzeptiert.
+
+
+## V68 – Stabiler Massenimport / Upload und Dolibarr-Verarbeitung getrennt
+
+V67 führte Upload, Klassifikation, Kundensuche/-anlage und Dolibarr-Übertragung innerhalb desselben HTTP-Requests aus. Bei größeren Mengen konnte ein langsamer oder abgebrochener API-/PHP-CGI-Aufruf im Browser als `NetworkError when attempting to fetch resource` erscheinen.
+
+V68 trennt den Ablauf in zwei Phasen:
+1. PDF/XML und erkannte Metadaten werden zuerst sicher in `document_intake_items` gespeichert; der Server antwortet sofort mit Status `queued`.
+2. Erst danach wird jede gespeicherte Import-ID in einem eigenen Request nach Dolibarr verarbeitet.
+
+Folgen:
+- ein Dolibarr-/Netzwerkfehler vernichtet keinen Datei-Upload mehr;
+- bereits gespeicherte Belege können über **Warteschlange verarbeiten** erneut abgearbeitet werden;
+- Uploadfehler und Verarbeitungsfehler werden getrennt angezeigt;
+- Netzwerkfehler werden einmal automatisch wiederholt;
+- der SHA-256-Dublettenschutz verhindert beim Wiederholen eine zweite Ablage derselben Datei;
+- bei großen Stapeln werden zuerst alle Dateien sicher hochgeladen und erst danach verarbeitet.
