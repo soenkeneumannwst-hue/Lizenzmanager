@@ -4,7 +4,7 @@ Zentrale Projektdokumentation für den Lizenzmanager von FALKE-KASSEN.
 
 **Produktionssystem:** `https://www.pc-kassen.net/lizenzmanager/`  
 **Dokumentationsstand:** 18.09.2026  
-**Aktueller dokumentierter Patchstand:** V69
+**Aktueller dokumentierter Patchstand:** V70
 
 ## Zweck
 
