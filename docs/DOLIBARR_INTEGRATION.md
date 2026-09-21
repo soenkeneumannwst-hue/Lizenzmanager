@@ -765,3 +765,19 @@ Ab V75 entscheidet **nicht mehr der Eingangskanal** über die Fachverarbeitung. 
 Der V72/V73-Weg bleibt bestehen: lokaler Kundenabgleich, Dolibarr-Ausgangsrechnung/Dokument, TSE-Erkennung und Stammdatenanreicherung.
 
 Bestehende historische QUAD-Datensätze werden aus Sicherheitsgründen nicht automatisch gelöscht oder zusammengeführt; V75 verhindert die unerwünschte Neuanlage künftig.
+
+
+## V76 – Manuelle Kundenwahl und Belegdatenkorrektur
+
+Problembelege können jetzt vor der Verarbeitung vollständig korrigiert und eindeutig einem Kunden zugeordnet werden.
+
+- Kundenwahl öffnet eine gemeinsame Suche über **Lizenzmanager** und **Dolibarr**.
+- Beide Quellen werden getrennt gekennzeichnet; bestehende Verknüpfungen werden sichtbar angezeigt.
+- Suche nach Name, Alias, Kundennummer, PLZ und Ort.
+- Der gewählte Datensatz wird über **Übernehmen** sofort gespeichert und verarbeitet; `erneut prüfen` ist dafür nicht erforderlich.
+- Wird bei einer FALKE-Ausgangsrechnung ein bisher nicht lokal verknüpfter Dolibarr-Kunde gewählt, wird er sicher lokal gespiegelt bzw. mit einem eindeutigen vorhandenen Kunden verknüpft.
+- Bei mehreren lokalen Kandidaten wird keine neue Dublette angelegt.
+- **Neuen Kunden aus Belegdaten anlegen** ist möglich; der Dublettenschutz bleibt aktiv.
+- Bei QUAD/Dolibarr-only erzeugt eine Neuanlage ausschließlich einen Dolibarr-Kunden, niemals einen Lizenzmanager-Kunden.
+- Erkannte Belegdaten können über **Belegdaten bearbeiten** korrigiert werden: Belegart, Richtung, Lieferant, Belegnummer/-datum, Kunde/Ansprechpartner, Kundennummer, Anschrift, USt-ID und Beträge.
+- Bereits zugeordnete oder gerade verarbeitete Belege werden nicht still verändert.
