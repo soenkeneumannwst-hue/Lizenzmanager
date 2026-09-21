@@ -1,3 +1,12 @@
+## V71 – Warteschlangen-Autoworker
+
+- Queue verarbeitet immer den nächsten Beleg frisch aus der DB
+- problematischer Einzelbeleg stoppt den Stapel nicht mehr
+- automatische Fortsetzung beim Öffnen der Importseite
+- automatische Fortsetzung nach Massen-Upload
+- neuer Status „Wird verarbeitet“
+- stale processing-Einträge werden erneut eingereiht
+
 ## V70 – Alias-/Betriebsnamen beim Dokumentenimport
 
 - Dolibarr name_alias in Kundenmatching aufgenommen
