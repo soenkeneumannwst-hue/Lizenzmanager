@@ -1,3 +1,17 @@
+## V78 – Kaufvariante dauerhaft im Angebotssystem
+
+- jedes Full-Service-Angebot kann zusätzlich als klassische Kaufvariante ausgegeben werden
+- beide Varianten verwenden dieselben Angebotspositionen
+- zusätzlicher PDF-Typ „Kaufvariante“ mit Versionierung/Archivierung
+- feste Gliederung: Hardware, Software, Einrichtung/Programmierung, monatliche Updates/Softwarekosten, Support
+- Verkaufspreis je Angebotsposition explizit als Kauf-VK sichtbar
+- bei Dienstleistung mit Stunden wird VK als Verkaufspreis je Stunde verwendet
+- Software mit Produktbezug übernimmt weiterhin den gültigen VK aus der Preisliste
+- Softwarepflege wird aus derselben zentralen 15-%-Logik berechnet
+- BusinessCard-Rabatt und Servicepauschale werden in der Kaufvariante berücksichtigt
+- fehlende Verkaufspreise werden vor der PDF-Ausgabe sichtbar gemeldet
+- Full-Service-Kalkulation und Vertragslogik bleiben unverändert
+
 ## V78 – Zweite Angebotsvariante: Kauf + Einzelpreise
 
 - Full-Service-Angebot bleibt als Variante 1 unverändert erhalten
