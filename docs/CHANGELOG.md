@@ -1,3 +1,17 @@
+## V81 – Mehrere E-Mail-Konten / Routing / TSE-Nacharbeit
+
+- beliebig viele IMAP-Empfangskonten
+- zentrale Maske „System → E-Mail-Konten & Regeln“
+- je Konto erwarteter Lieferant, Richtung, Dokumenttyp und Verarbeitungsweg
+- Dolibarr, Kundenanlage, Lizenzdaten, Dongle, TSE-Lager und TSE-Kundenzuordnung je Konto separat schaltbar
+- bestehendes Einzelpostfach wird automatisch als erstes Konto übernommen
+- E-Mail-Arbeitskorb verarbeitet alle aktiven Konten und kann jedes Konto einzeln abrufen
+- Profil/erkannter Lieferant werden gegengeprüft; Widerspruch stoppt automatische Verarbeitung
+- CASPOS/EUCASOFT-Lizenzweg und Dolibarr-only serverseitig getrennt
+- TSE-Lagerbuchung aus Lieferantenrechnungen pro Konto schaltbar
+- TSE-Kundenzuordnung aus Ausgangsrechnungen pro Konto schaltbar
+- neue TSE-Nacharbeit für zugeordnete TSEs mit fehlender Hardware-ID, technischer Seriennummer oder Ablaufdatum
+
 ## V81 – E-Mail-Regelengine / Lizenzmail / TSE
 
 - mehrere IMAP-Konten und Empfängerregeln
