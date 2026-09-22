@@ -816,3 +816,17 @@ Strukturierte E-Mail-Texte wie „Dongle Upgrade“ können ohne PDF ausgewertet
 - Eine TSE, die bereits einem anderen Kunden gehört, wird nicht automatisch umgehängt.
 - Fehlen Hardware-ID, technische TSE-Seriennummer oder Zertifikatsablauf, entsteht eine Aufgabe unter **Stammdaten → TSE-Nachpflege**.
 - Nachpflege schreibt die Daten in den Lizenzmanager und bietet den direkten Sprung zum Dolibarr-Kunden. Ein direktes Schreiben in spezielle Dolibarr-TSE-Extrafields wird erst aktiviert, wenn deren konkrete Feldnamen festgelegt sind.
+
+
+## V81 – E-Mail-Routing als konfigurierbare Fachregel
+
+Der Eingangskanal ist ab V81 selbst konfigurierbar. Mehrere IMAP-Konten können parallel betrieben werden. Jedes Konto erhält ein Profil mit erwartetem Lieferanten, Richtung, Dokumenttyp und erlaubten Aktionen.
+
+Beispielprofile:
+- **EUCASOFT/CASPOS**: Lizenz-/Dongle-Daten verarbeiten, TSE aus Lieferantenrechnungen als Bestand buchen, Dolibarr synchronisieren.
+- **Eingangsrechnung**: Dolibarr-only; keine lokale Lizenzkundenanlage und keine Lizenzpflege.
+- **Ausgangsrechnung**: FALKE-Ausgangsrechnung; Kunden-/Dolibarr-Abgleich und optional TSE-Kundenzuordnung.
+
+Die Optionen `process_license_data`, `process_dongle_data`, `tse_inventory_enabled`, `tse_customer_assignment_enabled`, `create_local_customer`, `create_dolibarr_customer` und `sync_dolibarr` werden pro Konto gespeichert. Das erkannte Dokument wird gegen das Konto-Profil geprüft; ein Lieferantenwiderspruch führt zur manuellen Prüfung statt zu einer stillen Fehlbuchung.
+
+Zusätzlich gibt es eine TSE-Nacharbeit für bereits einem Kunden zugeordnete TSEs, bei denen Hardware-ID, technische Seriennummer oder Zertifikatsablauf noch unvollständig sind.
