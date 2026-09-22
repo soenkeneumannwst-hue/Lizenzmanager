@@ -1,3 +1,11 @@
+## V80 – Dienstleistung als Pauschalpreis in der Kaufvariante
+
+- Programmierung / Einrichtung werden in der Kaufvariante nicht mehr mit den hinterlegten Stunden multipliziert
+- Verkaufspreis Kaufvariante = Pauschalpreis je Angebotsmenge
+- Stunden bleiben Leistungsumfang und interne EK-/Zeitkalkulation
+- PDF zeigt Dienstleistungsmenge als Pauschale
+- bestehende Angebote werden ohne Datenmigration sofort korrekt neu berechnet
+
 ## V79 – PDF-Ausgabe sichtbar + aktuelle Kundendaten
 
 - eigener deutlich sichtbarer Bereich „PDF-Ausgabe“ im Full-Service-Angebot
