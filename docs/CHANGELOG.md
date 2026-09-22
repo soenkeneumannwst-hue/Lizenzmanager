@@ -1,3 +1,17 @@
+## V81 – E-Mail-Regelengine / Lizenzmail / TSE
+
+- mehrere IMAP-Konten und Empfängerregeln
+- gemeinsame Regelmaske mit einzeln schaltbaren Fachfunktionen
+- gleiche IMAP-Zugangsdaten können für mehrere Empfängeradressen/Regeln genutzt werden
+- To/Delivered-To/X-Original-To zur Regelauswahl
+- Schnellvorlagen für EUCASOFT, CASPOS, Dolibarr-only, QUAD und Ausgangsrechnung
+- E-Mail-Textparser für strukturierte Dongle-/Lizenzinformationen
+- bestehende Lizenz anhand Dongle/Freischaltung aktualisieren; optionale sichere Neuanlage
+- CASPOS/EUCASOFT TSE-Einkauf → TSE-Bestand
+- FALKE-Ausgangsrechnung TSE-Bestand → Kunde
+- TSE-Nachpflege für fehlende Hardware-ID, technische Seriennummer oder Ablaufdatum
+- offene Lizenzmails mit Wiederholungsprüfung
+
 ## V80 – Dienstleistung als Pauschalpreis in der Kaufvariante
 
 - Programmierung / Einrichtung werden in der Kaufvariante nicht mehr mit den hinterlegten Stunden multipliziert
