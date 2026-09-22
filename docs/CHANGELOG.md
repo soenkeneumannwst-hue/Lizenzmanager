@@ -1,3 +1,14 @@
+## V79 – PDF-Ausgabe sichtbar + aktuelle Kundendaten
+
+- eigener deutlich sichtbarer Bereich „PDF-Ausgabe“ im Full-Service-Angebot
+- Full-Service PDF, Kauf-PDF und interne Kalkulations-PDF direkt erreichbar
+- Kauf-PDF bleibt sichtbar; bei fehlenden Verkaufspreisen führt „Kauf-PDF vorbereiten“ direkt zur Preisergänzung
+- Angebotsübersicht zeigt Kauf-PDF ebenfalls direkt
+- neue PDFs laden Name, Straße, Adresszusatz, PLZ, Ort, Land und E-Mail immer aus dem aktuell verknüpften Kundenstamm
+- Kundensnapshot des Angebots wird beim Öffnen/Bearbeiten aktualisiert
+- zusätzlicher Button „Kundendaten neu laden“
+- archivierte PDFs bleiben historische Versionen; neue PDFs enthalten korrigierte Kundenadressen
+
 ## V78 – Kaufvariante dauerhaft im Angebotssystem
 
 - jedes Full-Service-Angebot kann zusätzlich als klassische Kaufvariante ausgegeben werden
