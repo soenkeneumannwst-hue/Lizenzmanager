@@ -781,3 +781,38 @@ Problembelege können jetzt vor der Verarbeitung vollständig korrigiert und ein
 - Bei QUAD/Dolibarr-only erzeugt eine Neuanlage ausschließlich einen Dolibarr-Kunden, niemals einen Lizenzmanager-Kunden.
 - Erkannte Belegdaten können über **Belegdaten bearbeiten** korrigiert werden: Belegart, Richtung, Lieferant, Belegnummer/-datum, Kunde/Ansprechpartner, Kundennummer, Anschrift, USt-ID und Beträge.
 - Bereits zugeordnete oder gerade verarbeitete Belege werden nicht still verändert.
+
+
+## V81 – Mehrere E-Mail-Konten, Regelengine, Lizenzmail und TSE-Nachpflege
+
+Die E-Mail-Verarbeitung wird pro Empfangskonto/-adresse über eine sichtbare Regelmaske gesteuert. Eingangskanal und Fachlogik bleiben getrennt.
+
+### E-Mail-Konten / Empfängerregeln
+- beliebig viele IMAP-Konten bzw. Empfangsadressen unter **System → E-Mail-Konten & Regeln**
+- pro Regel: Richtung, Dokumenttyp, Lieferant, Verarbeitungsweg, Absenderfilter und einzelne Funktionsschalter
+- PDF/XML und E-Mail-Text sind getrennt aktivierbar
+- Schnellvorlagen: EUCASOFT, CASPOS, Eingangsrechnung → nur Dolibarr, QUAD → nur Dolibarr, FALKE-Ausgangsrechnung
+- mehrere Empfängeradressen dürfen denselben IMAP-Login verwenden; To/Delivered-To/X-Original-To entscheidet die passende Regel
+- bei mehreren Regeln ohne passenden Empfänger wird nicht blind über die erste Regel verbucht
+
+### Schaltbare Funktionen
+- lokalen Lizenzmanager-Kunden anlegen erlauben
+- Dolibarr-Kunden anlegen erlauben
+- Dolibarr synchronisieren
+- Lieferantenrechnung im Lizenzmanager prüfen/speichern
+- Lizenz-/Dongle-/Modulinformationen übernehmen
+- fehlende Lizenz bei eindeutiger Zuordnung automatisch anlegen erlauben
+- E-Mail-Text auf Lizenzdaten auswerten
+- TSE aus Eingangsrechnung in Bestand übernehmen
+- TSE aus Ausgangsrechnung dem Kunden zuordnen
+- unvollständige TSE als Nachpflege-Aufgabe melden
+
+### Lizenz-/Dongle-E-Mails
+Strukturierte E-Mail-Texte wie „Dongle Upgrade“ können ohne PDF ausgewertet werden. Unterstützt werden u. a. Freischaltung, Firma, Anschrift, Dongle-ID/-Datum, Basislizenz, BusinessCard, Module und Lizenz-Code. Vorhandene Lizenzen werden über Dongle/Freischaltung wiedergefunden; eine Neuanlage erfolgt nur bei eindeutigem Kunde/Hersteller/Basisprodukt und nur wenn der Schalter dafür aktiv ist. Unklare Fälle erscheinen unter **Einkauf → Lizenz-/Dongle-E-Mails**.
+
+### TSE
+- CASPOS/EUCASOFT-Eingangsrechnungen können erkannte TSEs als Lagerbestand in `tse_devices` übernehmen.
+- FALKE-Ausgangsrechnungen können vorhandene Bestands-TSEs anhand Hardware-ID bzw. technischer Seriennummer dem Kunden zuordnen.
+- Eine TSE, die bereits einem anderen Kunden gehört, wird nicht automatisch umgehängt.
+- Fehlen Hardware-ID, technische TSE-Seriennummer oder Zertifikatsablauf, entsteht eine Aufgabe unter **Stammdaten → TSE-Nachpflege**.
+- Nachpflege schreibt die Daten in den Lizenzmanager und bietet den direkten Sprung zum Dolibarr-Kunden. Ein direktes Schreiben in spezielle Dolibarr-TSE-Extrafields wird erst aktiviert, wenn deren konkrete Feldnamen festgelegt sind.
