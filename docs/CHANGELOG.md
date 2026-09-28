@@ -1,3 +1,18 @@
+## V82 – Anzahlung / Risikominderung bei Full-Service
+
+- Anzahlung bei Auftragserteilung als eigener Angebotswert
+- automatischer oder manueller Ratenmodus
+- Anzahlung reduziert nur den zu finanzierenden Anfangsblock
+- laufende Software-/Servicekosten und Ersatzrückstellungen bleiben erhalten
+- Rate ohne Anzahlung, monatliche Entlastung, Finanzierungswert und Startkapitalrisiko sichtbar
+- Kunden-PDF zeigt Anzahlung netto/brutto separat
+- interne Kalkulations-PDF zeigt Risikokennzahlen
+- 72-Monats-Projektion berücksichtigt Anzahlung
+- Vertragsübernahme übernimmt die Anzahlung
+- Anzahlung kann im Vertrag als bezahlt markiert werden; erst dann zählt sie in der Ist-Rentabilität
+- Kundenstatus zeigt vereinbarte Anzahlung und Zahlungsstatus
+- bestehende Angebote bleiben zunächst im manuellen Ratenmodus, damit alte Kundenraten nicht ungefragt verändert werden
+
 ## V81 – Mehrere E-Mail-Konten / Routing / TSE-Nacharbeit
 
 - beliebig viele IMAP-Empfangskonten
